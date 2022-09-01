@@ -18,7 +18,9 @@ type Customer = {
   name: string;
 };
 
-type OrderStatus = 'pending' | 'paid' | 'shipped' | 'cancelled' | 'completed' | 'refunded';
+const ValidOrderStatus = ['pending', 'paid', 'shipped', 'cancelled', 'completed', 'refunded'] as const;
+// type OrderStatus = 'pending' | 'paid' | 'shipped' | 'cancelled' | 'completed' | 'refunded';
+type OrderStatus = typeof ValidOrderStatus[number];
 
 type OrderItem = {
   product: Product;
@@ -34,4 +36,5 @@ type Order = {
   items: OrderItem[];
 };
 
+export { ValidOrderStatus };
 export type { Category, Product, Customer, OrderStatus, OrderItem, Order };

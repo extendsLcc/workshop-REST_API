@@ -1,5 +1,6 @@
-import { Order, OrderItem } from '@/entities';
+import { Order, OrderItem, OrderStatus, ValidOrderStatus } from '@/entities';
 import { dummyOrders } from '@/test/dummies';
+import { isInArray } from '@/util';
 import { getCustomerById } from './customer.service';
 import { getProductById, subtractProductStock } from './product.service';
 
@@ -54,5 +55,25 @@ function listOrders() {
   return ordersFakeDatabase;
 }
 
-export { placeOrder, listOrders };
+async function updateOrderStatus(orderId: string, newStatus: OrderStatus) {
+  const order = ordersFakeDatabase.find((order) => order.id === orderId);
+  if (!order) {
+    throw new Error(`Order with id ${orderId} not found`);
+  }
+  if (['cancelled', 'completed', 'refunded'].includes(order.status)) {
+    throw new Error(`Order with id ${orderId} is already ${order.status} and cannot be updated`);
+  }
+  if (['cancelled', 'refunded'].includes(newStatus)) {
+    order.items.forEach((orderItem) => {
+      subtractProductStock(orderItem.product, -orderItem.quantity);
+    });
+  }
+  order.status = newStatus;
+}
+
+function isValidOrderStatus(statusText: string): statusText is OrderStatus {
+  return isInArray(statusText, ValidOrderStatus);
+}
+
+export { placeOrder, listOrders, updateOrderStatus, isValidOrderStatus };
 export type { CreateOrderInput };
