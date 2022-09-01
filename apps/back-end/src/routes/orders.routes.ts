@@ -1,4 +1,3 @@
-import { OrderStatus, ValidOrderStatus } from '@/entities';
 import {
   CreateOrderInput,
   isValidOrderStatus,
