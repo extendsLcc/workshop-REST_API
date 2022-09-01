@@ -18,5 +18,7 @@
     "project": ["./tsconfig.json"]
   },
   "plugins": ["@typescript-eslint", "import", "prettier"],
-  "rules": {}
+  "rules": {
+    "@typescript-eslint/no-floating-promises": "off"
+  }
 }
