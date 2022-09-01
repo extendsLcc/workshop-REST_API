@@ -3,7 +3,7 @@
 
 > An extremely simplified product placing order application, without any authentication or any complex real-life flow, mostly for learning the basic concepts of REST API.
 
-This project was developed to help demonstrate the concepts taught during the workshop i will be presenting at [Setec 2022](https://www.even3.com.br/setec2022umuarama/) for university [IFPR - Campus Umuarama](https://www.even3.com.br/setec2022umuarama/).
+This project was developed to help demonstrate the concepts taught during the workshop i will be presenting at [Setec 2022](https://www.even3.com.br/setec2022umuarama/) for university [IFPR - Campus Umuarama](https://umuarama.ifpr.edu.br/).
 
 ## :pushpin: Table of Contents
 
