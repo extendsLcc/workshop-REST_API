@@ -1,7 +1,8 @@
 import { Customer } from '@/entities';
+import { dummyCustomers } from '@/test/dummies';
 
 let customerIdAutoIncrement = 1;
-const customersFakeDatabase: Customer[] = [];
+const customersFakeDatabase: Customer[] = [...dummyCustomers];
 
 type CustomerWithoutId = Omit<Customer, 'id'>;
 

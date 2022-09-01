@@ -1,9 +1,10 @@
 import { Order, OrderItem } from '@/entities';
+import { dummyOrders } from '@/test/dummies';
 import { getCustomerById } from './customer.service';
 import { getProductById, subtractProductStock } from './product.service';
 
 let orderIdAutoIncrement = 1;
-const ordersFakeDatabase: Order[] = [];
+const ordersFakeDatabase: Order[] = [...dummyOrders];
 
 type CreateOrderInput = {
   customerId: number;
