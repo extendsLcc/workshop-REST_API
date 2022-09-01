@@ -268,5 +268,38 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "0730cdc1-cdf7-49b1-97b5-a97c827d2637",
+    "colId": "decdeb02-57fa-4b61-abcd-86ac9258c1b9",
+    "containerId": "2b36beaa-28cd-47c9-bebb-63322b801528",
+    "name": "List Customers",
+    "url": "http://localhost:3000/customers",
+    "method": "GET",
+    "sortNum": 60000,
+    "created": "2022-09-01T19:15:11.021Z",
+    "modified": "2022-09-01T19:15:28.389Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "df3e287d-2a4a-4f87-b086-19f09e050c87",
+    "colId": "decdeb02-57fa-4b61-abcd-86ac9258c1b9",
+    "containerId": "2b36beaa-28cd-47c9-bebb-63322b801528",
+    "name": "Create Customer",
+    "url": "http://localhost:3000/customers",
+    "method": "POST",
+    "sortNum": 70000,
+    "created": "2022-09-01T19:15:43.132Z",
+    "modified": "2022-09-01T19:16:14.304Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"Customer Z\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
