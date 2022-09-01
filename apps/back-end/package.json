@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "fastify": "^4.5.3",
+    "http-status": "^1.5.2",
     "pino": "^8.4.2",
     "pino-pretty": "^9.1.0"
   },
