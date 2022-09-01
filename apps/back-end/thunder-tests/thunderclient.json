@@ -1,0 +1,79 @@
+[
+  {
+    "_id": "5ccb55be-5769-43af-824f-aa666e5cb22c",
+    "colId": "2b270b6f-6f82-483d-b7af-0436065e5781",
+    "containerId": "",
+    "name": "Basic Request example",
+    "url": "http://localhost:3000",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-09-01T02:33:37.420Z",
+    "modified": "2022-09-01T02:33:37.420Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "af333ddb-5acc-417f-96c0-4cdc11485e97",
+    "colId": "2b270b6f-6f82-483d-b7af-0436065e5781",
+    "containerId": "",
+    "name": "Request with query params",
+    "url": "http://localhost:3000/query?search=cultured content&page=10&limit=5",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2022-09-01T02:34:49.906Z",
+    "modified": "2022-09-01T02:36:31.465Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "search",
+        "value": "cultured content",
+        "isPath": false
+      },
+      {
+        "name": "page",
+        "value": "10",
+        "isPath": false
+      },
+      {
+        "name": "limit",
+        "value": "5",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "75943d1a-477d-48cf-b09b-8b9f7946db04",
+    "colId": "2b270b6f-6f82-483d-b7af-0436065e5781",
+    "containerId": "",
+    "name": "Request with body",
+    "url": "http://localhost:3000/post",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2022-09-01T02:36:58.897Z",
+    "modified": "2022-09-01T02:37:54.366Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"extendslcc\",\n  \"workshop\": \"REST-api basics\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "75c91cc5-f370-48b8-b650-f5239622e1e5",
+    "colId": "2b270b6f-6f82-483d-b7af-0436065e5781",
+    "containerId": "",
+    "name": "Request with route param",
+    "url": "http://localhost:3000/route/42",
+    "method": "GET",
+    "sortNum": 40000,
+    "created": "2022-09-01T02:38:30.720Z",
+    "modified": "2022-09-01T02:38:44.810Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  }
+]
