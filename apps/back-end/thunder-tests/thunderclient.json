@@ -165,7 +165,7 @@
     "method": "GET",
     "sortNum": 10000,
     "created": "2022-09-01T06:08:42.999Z",
-    "modified": "2022-09-01T19:04:07.010Z",
+    "modified": "2022-09-01T20:08:05.369Z",
     "headers": [],
     "params": [
       {
@@ -298,6 +298,25 @@
     "body": {
       "type": "json",
       "raw": "{\n  \"name\": \"Customer Z\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "8a3a9518-2073-45e2-8f69-cbf88be893c2",
+    "colId": "decdeb02-57fa-4b61-abcd-86ac9258c1b9",
+    "containerId": "014eb061-1530-40a4-9c36-70ab85840501",
+    "name": "Create Order",
+    "url": "http://localhost:3000/orders",
+    "method": "POST",
+    "sortNum": 80000,
+    "created": "2022-09-01T20:09:56.610Z",
+    "modified": "2022-09-01T20:14:43.927Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"customerId\": 1,\n  \"products\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 3\n    },\n    {\n      \"productId\": 3,\n      \"quantity\": 30\n    }\n  ]\n}",
       "form": []
     },
     "tests": []
