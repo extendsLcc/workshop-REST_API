@@ -76,7 +76,7 @@ const dummyCustomers: Customer[] = [
 
 const dummyOrders: Order[] = [
   {
-    id: 1,
+    id: '0001',
     customer: dummyCustomers[0],
     date: new Date('2021-01-01'),
     status: 'pending',
@@ -94,7 +94,7 @@ const dummyOrders: Order[] = [
     ],
   },
   {
-    id: 2,
+    id: '0002',
     customer: dummyCustomers[1],
     date: new Date('2022-02-02'),
     status: 'completed',

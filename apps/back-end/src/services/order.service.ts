@@ -40,7 +40,7 @@ async function placeOrder(createOrderParams: CreateOrderInput) {
   });
 
   const createdOrder: Order = {
-    id: orderIdAutoIncrement++,
+    id: `${orderIdAutoIncrement++}`.padStart(4, '0'),
     date: new Date(),
     customer: orderingCustomer,
     items: orderItems,

@@ -27,7 +27,7 @@ type OrderItem = {
 };
 
 type Order = {
-  id: number;
+  id: string;
   date: Date;
   customer: Customer;
   status: OrderStatus;
