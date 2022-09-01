@@ -334,5 +334,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "7095b837-f16c-4900-96a7-06ab8890c7ec",
+    "colId": "decdeb02-57fa-4b61-abcd-86ac9258c1b9",
+    "containerId": "014eb061-1530-40a4-9c36-70ab85840501",
+    "name": "Change Order Status",
+    "url": "http://localhost:3000/orders/0001",
+    "method": "PATCH",
+    "sortNum": 90000,
+    "created": "2022-09-01T20:57:52.808Z",
+    "modified": "2022-09-01T21:00:39.211Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"status\": \"cancelled\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
