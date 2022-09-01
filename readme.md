@@ -30,7 +30,7 @@ Install project dependencies
 # Access the project folder
 cd Workshop-REST_API_for_beginners_with_nodejs
 # Install dependencies
-pnmp install
+pnpm install
 ```
 Open back-end API project in VSCode
 ```sh
