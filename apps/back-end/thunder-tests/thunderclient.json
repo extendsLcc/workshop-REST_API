@@ -155,5 +155,85 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "321da09c-ea53-48d4-8e4d-d6a175f8be3e",
+    "colId": "decdeb02-57fa-4b61-abcd-86ac9258c1b9",
+    "containerId": "e29caee8-bc33-451e-a0d3-9e9af57aa89d",
+    "name": "List Products",
+    "url": "http://localhost:3000/products",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-09-01T06:08:42.999Z",
+    "modified": "2022-09-01T06:09:36.878Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "d695b6f3-5099-4b48-8d18-4539f9396df6",
+    "colId": "decdeb02-57fa-4b61-abcd-86ac9258c1b9",
+    "containerId": "e29caee8-bc33-451e-a0d3-9e9af57aa89d",
+    "name": "Create Product",
+    "url": "http://localhost:3000/products",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-09-01T06:08:43.000Z",
+    "modified": "2022-09-01T06:32:50.142Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"Product X\",\n  \"description\": \"Product X description\",\n  \"price\": 1000,\n  \"stock\": 10,\n  \"categoryId\": 1\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "7c7b3c27-d22f-4d17-8350-a481451f9166",
+    "colId": "decdeb02-57fa-4b61-abcd-86ac9258c1b9",
+    "containerId": "e29caee8-bc33-451e-a0d3-9e9af57aa89d",
+    "name": "Get Product",
+    "url": "http://localhost:3000/products/1",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2022-09-01T06:08:43.001Z",
+    "modified": "2022-09-01T06:10:23.281Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "e577e402-c4b1-44b8-9010-8f3a6a586bce",
+    "colId": "decdeb02-57fa-4b61-abcd-86ac9258c1b9",
+    "containerId": "e29caee8-bc33-451e-a0d3-9e9af57aa89d",
+    "name": "Update Product",
+    "url": "http://localhost:3000/products/1",
+    "method": "PUT",
+    "sortNum": 40000,
+    "created": "2022-09-01T06:08:43.002Z",
+    "modified": "2022-09-01T06:10:22.370Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"Category XYZ updated\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "91c0f282-7a7f-46c0-a9e7-d5c2b2561ad8",
+    "colId": "decdeb02-57fa-4b61-abcd-86ac9258c1b9",
+    "containerId": "e29caee8-bc33-451e-a0d3-9e9af57aa89d",
+    "name": "Delete Product",
+    "url": "http://localhost:3000/products/3",
+    "method": "DELETE",
+    "sortNum": 50000,
+    "created": "2022-09-01T06:08:43.003Z",
+    "modified": "2022-09-01T06:10:20.377Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
