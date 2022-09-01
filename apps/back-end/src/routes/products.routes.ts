@@ -15,9 +15,16 @@ async function productsRoutes(fastify: FastifyInstance) {
   fastify.get<{
     Querystring: {
       search?: string;
+      categoryId?: string;
+      onlyDisabled?: string;
     };
   }>('/products', (request) => {
-    return listProducts(request.query.search);
+    const { search, categoryId, onlyDisabled } = request.query;
+    return listProducts({
+      search,
+      categoryId: categoryId ? Number(categoryId) : undefined,
+      ...(onlyDisabled && { status: false }),
+    });
   });
   // Create a new product
   fastify.post<{

@@ -22,11 +22,21 @@ async function createProduct(product: Omit<ProductInput, 'status'>) {
   return createdProduct;
 }
 
-function listProducts(search?: string) {
+type ListProductsFilterParams = {
+  search?: string;
+  categoryId?: number;
+  status?: boolean;
+};
+
+function listProducts({ search, categoryId, status = true }: ListProductsFilterParams) {
+  let filteredProducts = productsFakeDatabase.filter((product) => product.status === status);
   if (search) {
-    return productsFakeDatabase.filter((product) => product.name.includes(search));
+    filteredProducts = filteredProducts.filter((product) => product.name.includes(search));
   }
-  return productsFakeDatabase;
+  if (categoryId) {
+    filteredProducts = filteredProducts.filter((product) => product.category.id === categoryId);
+  }
+  return filteredProducts;
 }
 
 function getProductById(productId: number) {
