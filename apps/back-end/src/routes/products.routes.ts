@@ -32,10 +32,13 @@ async function productsRoutes(fastify: FastifyInstance) {
   fastify.post<{
     Body: ProductInput;
   }>('/products', async (request, reply) => {
-    const createdProduct = await createProduct(request.body).catch((error) => {
-      reply.status(HttpStatus.BAD_REQUEST).send(error);
-    });
-    return reply.status(HttpStatus.CREATED).send(createdProduct);
+    return createProduct(request.body)
+      .then((createProduct) => {
+        return reply.status(HttpStatus.CREATED).send(createProduct);
+      })
+      .catch((error) => {
+        reply.status(HttpStatus.BAD_REQUEST).send(error);
+      });
   });
 
   // Get a product by id
