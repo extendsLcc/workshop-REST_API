@@ -1,10 +1,9 @@
-import { Category, PrismaClient } from '@prisma/client';
+import { PrismaClient, Prisma } from '@prisma/client';
 
-type CategoryWithoutId = Omit<Category, 'id'>;
 class CategoryService {
   constructor(private readonly prisma: PrismaClient) {}
 
-  async createCategory(newCategoryInput: CategoryWithoutId) {
+  async createCategory(newCategoryInput: Prisma.CategoryCreateInput) {
     return await this.prisma.category.create({
       data: newCategoryInput,
     });
@@ -18,7 +17,7 @@ class CategoryService {
     return await this.prisma.category.findUnique({ where: { id: categoryId } });
   }
 
-  async updateCategory(categoryId: number, category: CategoryWithoutId) {
+  async updateCategory(categoryId: number, category: Prisma.CategoryUpdateInput) {
     return await this.prisma.category.update({
       where: { id: categoryId },
       data: category,
@@ -31,4 +30,3 @@ class CategoryService {
 }
 
 export { CategoryService };
-export type { CategoryWithoutId };

@@ -1,5 +1,6 @@
-import { CategoryWithoutId, CategoryService } from '@/services/category.service';
+import { CategoryService } from '@/services/category.service';
 import { IdRouteParam, isPrismaRecordNotFoundError } from '@/util';
+import { Prisma } from '@prisma/client';
 import { FastifyInstance } from 'fastify';
 import HttpStatus from 'http-status';
 
@@ -13,7 +14,7 @@ async function categoryRoutes(fastify: FastifyInstance) {
 
   // Create a new category
   fastify.post<{
-    Body: CategoryWithoutId;
+    Body: Prisma.CategoryCreateInput;
   }>('/categories', async (request, reply) => {
     const { name } = request.body;
     const createdCategory = await categoryService.createCategory({ name });
@@ -35,7 +36,7 @@ async function categoryRoutes(fastify: FastifyInstance) {
   // Update a category by id
   fastify.put<{
     Params: IdRouteParam;
-    Body: CategoryWithoutId;
+    Body: Prisma.CategoryUpdateInput;
   }>('/categories/:id', async (request, reply) => {
     const { id } = request.params;
     return await categoryService.updateCategory(Number(id), request.body).catch((error) => {
