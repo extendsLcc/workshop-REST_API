@@ -75,5 +75,38 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "7aefe2cc-d233-4124-9967-b8bb7a421068",
+    "colId": "decdeb02-57fa-4b61-abcd-86ac9258c1b9",
+    "containerId": "494a10c8-9067-4771-a476-d8684217d556",
+    "name": "List Categories",
+    "url": "http://localhost:3000/categories",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-09-01T04:16:57.256Z",
+    "modified": "2022-09-01T04:48:11.847Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "a3850f26-dca0-481a-9e1d-28c6591584e3",
+    "colId": "decdeb02-57fa-4b61-abcd-86ac9258c1b9",
+    "containerId": "494a10c8-9067-4771-a476-d8684217d556",
+    "name": "Create Category",
+    "url": "http://localhost:3000/categories",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-09-01T04:48:21.126Z",
+    "modified": "2022-09-01T04:49:00.371Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"Category XYZ\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
