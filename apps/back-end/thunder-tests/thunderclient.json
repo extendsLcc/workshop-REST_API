@@ -118,7 +118,7 @@
     "method": "GET",
     "sortNum": 30000,
     "created": "2022-09-01T05:24:54.601Z",
-    "modified": "2022-09-01T05:42:33.736Z",
+    "modified": "2022-09-01T22:54:08.141Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -147,11 +147,11 @@
     "colId": "decdeb02-57fa-4b61-abcd-86ac9258c1b9",
     "containerId": "494a10c8-9067-4771-a476-d8684217d556",
     "name": "Delete Category",
-    "url": "http://localhost:3000/categories/3",
+    "url": "http://localhost:3000/categories/1",
     "method": "DELETE",
     "sortNum": 50000,
     "created": "2022-09-01T05:46:15.733Z",
-    "modified": "2022-09-01T05:47:43.639Z",
+    "modified": "2022-09-01T22:53:50.478Z",
     "headers": [],
     "params": [],
     "tests": []

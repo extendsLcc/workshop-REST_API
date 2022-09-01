@@ -1,44 +1,34 @@
-import { Category } from '@/entities';
-import { dummyCategories } from '@/test/dummies';
-
-let categoryIdAutoIncrement = dummyCategories.length + 1;
-const categoriesFakeDatabase: Category[] = [...dummyCategories];
+import { Category, PrismaClient } from '@prisma/client';
 
 type CategoryWithoutId = Omit<Category, 'id'>;
+class CategoryService {
+  constructor(private readonly prisma: PrismaClient) {}
 
-function createCategory(category: CategoryWithoutId) {
-  const createdCategory = {
-    id: categoryIdAutoIncrement++,
-    ...category,
-  };
-  categoriesFakeDatabase.push(createdCategory);
-  return createdCategory;
-}
-
-function listCategories() {
-  return categoriesFakeDatabase;
-}
-
-function getCategoryById(categoryId: number) {
-  return categoriesFakeDatabase.find((category) => category.id === categoryId);
-}
-
-function updateCategory(categoryId: number, category: CategoryWithoutId) {
-  const categoryToUpdate = categoriesFakeDatabase.find((category) => category.id === categoryId);
-  if (categoryToUpdate) {
-    Object.assign(categoryToUpdate, category);
+  async createCategory(newCategoryInput: CategoryWithoutId) {
+    return await this.prisma.category.create({
+      data: newCategoryInput,
+    });
   }
-  return categoryToUpdate;
-}
 
-function deleteCategoryById(categoryId: number): boolean {
-  const categoryToDeleteIndex = categoriesFakeDatabase.findIndex((category) => category.id === categoryId);
-  if (categoryToDeleteIndex >= 0) {
-    categoriesFakeDatabase.splice(categoryToDeleteIndex, 1);
-    return true;
+  async listCategories() {
+    return await this.prisma.category.findMany();
   }
-  return false;
+
+  async getCategoryById(categoryId: number) {
+    return await this.prisma.category.findUnique({ where: { id: categoryId } });
+  }
+
+  async updateCategory(categoryId: number, category: CategoryWithoutId) {
+    return await this.prisma.category.update({
+      where: { id: categoryId },
+      data: category,
+    });
+  }
+
+  async deleteCategoryById(categoryId: number) {
+    return await this.prisma.category.delete({ where: { id: categoryId } });
+  }
 }
 
-export { createCategory, listCategories, getCategoryById, updateCategory, deleteCategoryById };
+export { CategoryService };
 export type { CategoryWithoutId };
