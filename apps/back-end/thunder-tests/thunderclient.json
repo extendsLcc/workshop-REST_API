@@ -165,7 +165,7 @@
     "method": "GET",
     "sortNum": 10000,
     "created": "2022-09-01T06:08:42.999Z",
-    "modified": "2022-09-01T20:08:05.369Z",
+    "modified": "2022-09-01T20:21:56.740Z",
     "headers": [],
     "params": [
       {
@@ -319,6 +319,20 @@
       "raw": "{\n  \"customerId\": 1,\n  \"products\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 3\n    },\n    {\n      \"productId\": 3,\n      \"quantity\": 30\n    }\n  ]\n}",
       "form": []
     },
+    "tests": []
+  },
+  {
+    "_id": "f2813272-798f-46f6-b20e-24ffb446a6cd",
+    "colId": "decdeb02-57fa-4b61-abcd-86ac9258c1b9",
+    "containerId": "014eb061-1530-40a4-9c36-70ab85840501",
+    "name": "List Orders",
+    "url": "http://localhost:3000/orders",
+    "method": "GET",
+    "sortNum": 40000,
+    "created": "2022-09-01T20:17:48.137Z",
+    "modified": "2022-09-01T20:18:06.773Z",
+    "headers": [],
+    "params": [],
     "tests": []
   }
 ]
