@@ -19,7 +19,9 @@ async function productsRoutes(fastify: FastifyInstance) {
   fastify.post<{
     Body: ProductInput;
   }>('/products', async (request, reply) => {
-    const createdProduct = createProduct(request.body);
+    const createdProduct = await createProduct(request.body).catch((error) => {
+      reply.status(HttpStatus.BAD_REQUEST).send(error);
+    });
     return reply.status(HttpStatus.CREATED).send(createdProduct);
   });
   // Get a product by id
@@ -39,7 +41,9 @@ async function productsRoutes(fastify: FastifyInstance) {
     Body: ProductInput;
   }>('/products/:id', async (request, reply) => {
     const { id } = request.params;
-    const updatedProduct = updateProduct(Number(id), request.body);
+    const updatedProduct = await updateProduct(Number(id), request.body).catch((error) => {
+      reply.status(HttpStatus.BAD_REQUEST).send(error);
+    });
     if (updatedProduct) {
       return updatedProduct;
     }

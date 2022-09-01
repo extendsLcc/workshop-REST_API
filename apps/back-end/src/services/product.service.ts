@@ -6,7 +6,7 @@ const productsFakeDatabase: Product[] = [];
 
 type ProductInput = Omit<Product, 'id' | 'category'> & { categoryId: number };
 
-function createProduct(product: Omit<ProductInput, 'status'>) {
+async function createProduct(product: Omit<ProductInput, 'status'>) {
   const { categoryId, ...newProductParams } = product;
   const matchingCategory = getCategoryById(categoryId);
   if (!matchingCategory) {
@@ -30,7 +30,7 @@ function getProductById(productId: number) {
   return productsFakeDatabase.find((product) => product.id === productId);
 }
 
-function updateProduct(productId: number, product: ProductInput) {
+async function updateProduct(productId: number, product: ProductInput) {
   const { categoryId, ...newProductParams } = product;
   const matchingCategory = getCategoryById(categoryId);
   if (!matchingCategory) {
