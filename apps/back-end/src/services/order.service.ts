@@ -50,5 +50,9 @@ async function placeOrder(createOrderParams: CreateOrderInput) {
   return createdOrder;
 }
 
-export { placeOrder };
+function listOrders() {
+  return ordersFakeDatabase;
+}
+
+export { placeOrder, listOrders };
 export type { CreateOrderInput };

@@ -1,8 +1,13 @@
-import { CreateOrderInput, placeOrder } from '@/services/order.service';
+import { CreateOrderInput, listOrders, placeOrder } from '@/services/order.service';
 import { FastifyInstance } from 'fastify';
 import HttpStatus from 'http-status';
 
 async function ordersRoutes(fastify: FastifyInstance) {
+  // List all orders
+  fastify.get('/orders', async () => {
+    return listOrders();
+  });
+
   // Place Order endpoint
   fastify.post<{
     Body: CreateOrderInput;
