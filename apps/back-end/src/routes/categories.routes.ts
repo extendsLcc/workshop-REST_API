@@ -15,6 +15,7 @@ async function categoryRoutes(fastify: FastifyInstance) {
   fastify.get('/categories', () => {
     return listCategories();
   });
+
   // Create a new category
   fastify.post<{
     Body: CategoryWithoutId;
@@ -23,6 +24,7 @@ async function categoryRoutes(fastify: FastifyInstance) {
     const createdCategory = createCategory({ name });
     return reply.status(HttpStatus.CREATED).send(createdCategory);
   });
+
   // Get a category by id
   fastify.get<{
     Params: IdRouteParam;
@@ -34,6 +36,7 @@ async function categoryRoutes(fastify: FastifyInstance) {
     }
     return reply.status(HttpStatus.NOT_FOUND).send();
   });
+
   // Update a category by id
   fastify.put<{
     Params: IdRouteParam;
@@ -46,6 +49,7 @@ async function categoryRoutes(fastify: FastifyInstance) {
     }
     return reply.status(HttpStatus.NOT_FOUND).send();
   });
+
   // Delete a category by id
   fastify.delete<{
     Params: IdRouteParam;

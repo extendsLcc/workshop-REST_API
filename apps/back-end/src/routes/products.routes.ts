@@ -27,6 +27,7 @@ async function productsRoutes(fastify: FastifyInstance) {
       ...(onlyDisabled && { status: false }),
     });
   });
+
   // Create a new product
   fastify.post<{
     Body: ProductInput;
@@ -36,6 +37,7 @@ async function productsRoutes(fastify: FastifyInstance) {
     });
     return reply.status(HttpStatus.CREATED).send(createdProduct);
   });
+
   // Get a product by id
   fastify.get<{
     Params: IdRouteParam;
@@ -47,6 +49,7 @@ async function productsRoutes(fastify: FastifyInstance) {
     }
     return reply.status(HttpStatus.NOT_FOUND).send();
   });
+
   // Update a product by id
   fastify.put<{
     Params: IdRouteParam;
@@ -61,6 +64,7 @@ async function productsRoutes(fastify: FastifyInstance) {
     }
     return reply.status(HttpStatus.NOT_FOUND).send();
   });
+
   // Toggle product status by id
   fastify.patch<{
     Params: IdRouteParam;
@@ -72,6 +76,7 @@ async function productsRoutes(fastify: FastifyInstance) {
     }
     return reply.status(HttpStatus.NOT_FOUND).send();
   });
+
   // Delete a product by id
   fastify.delete<{
     Params: IdRouteParam;
