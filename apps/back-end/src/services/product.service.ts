@@ -2,7 +2,7 @@ import { Product } from '@/entities';
 import { dummyProducts } from '@/test/dummies';
 import { getCategoryById } from './category.service';
 
-let productIdAutoIncrement = 1;
+let productIdAutoIncrement = dummyProducts.length + 1;
 const productsFakeDatabase: Product[] = [...dummyProducts];
 
 type ProductInput = Omit<Product, 'id' | 'category'> & { categoryId: number };

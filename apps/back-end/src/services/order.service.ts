@@ -3,7 +3,7 @@ import { dummyOrders } from '@/test/dummies';
 import { getCustomerById } from './customer.service';
 import { getProductById, subtractProductStock } from './product.service';
 
-let orderIdAutoIncrement = 1;
+let orderIdAutoIncrement = dummyOrders.length + 1;
 const ordersFakeDatabase: Order[] = [...dummyOrders];
 
 type CreateOrderInput = {

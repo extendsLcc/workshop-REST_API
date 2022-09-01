@@ -1,7 +1,7 @@
 import { Category } from '@/entities';
 import { dummyCategories } from '@/test/dummies';
 
-let categoryIdAutoIncrement = 1;
+let categoryIdAutoIncrement = dummyCategories.length + 1;
 const categoriesFakeDatabase: Category[] = [...dummyCategories];
 
 type CategoryWithoutId = Omit<Category, 'id'>;
