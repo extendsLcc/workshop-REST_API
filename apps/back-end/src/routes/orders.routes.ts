@@ -2,7 +2,7 @@ import { CreateOrderInput, placeOrder } from '@/services/order.service';
 import { FastifyInstance } from 'fastify';
 import HttpStatus from 'http-status';
 
-async function customerRoutes(fastify: FastifyInstance) {
+async function ordersRoutes(fastify: FastifyInstance) {
   // Place Order endpoint
   fastify.post<{
     Body: CreateOrderInput;
@@ -17,4 +17,4 @@ async function customerRoutes(fastify: FastifyInstance) {
   });
 }
 
-export { customerRoutes };
+export { ordersRoutes };
