@@ -108,5 +108,52 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "9642872e-307c-4f94-b56b-99401ec518e9",
+    "colId": "decdeb02-57fa-4b61-abcd-86ac9258c1b9",
+    "containerId": "494a10c8-9067-4771-a476-d8684217d556",
+    "name": "Get Category",
+    "url": "http://localhost:3000/categories/1",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2022-09-01T05:24:54.601Z",
+    "modified": "2022-09-01T05:42:33.736Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "751da858-dcd1-41d8-a092-7d91b6b1b5f6",
+    "colId": "decdeb02-57fa-4b61-abcd-86ac9258c1b9",
+    "containerId": "494a10c8-9067-4771-a476-d8684217d556",
+    "name": "Update Category",
+    "url": "http://localhost:3000/categories/1",
+    "method": "PUT",
+    "sortNum": 40000,
+    "created": "2022-09-01T05:43:23.302Z",
+    "modified": "2022-09-01T05:45:37.149Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"Category XYZ updated\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "9e753e91-e6e8-4f78-b56a-f7d810d7f489",
+    "colId": "decdeb02-57fa-4b61-abcd-86ac9258c1b9",
+    "containerId": "494a10c8-9067-4771-a476-d8684217d556",
+    "name": "Delete Category",
+    "url": "http://localhost:3000/categories/3",
+    "method": "DELETE",
+    "sortNum": 50000,
+    "created": "2022-09-01T05:46:15.733Z",
+    "modified": "2022-09-01T05:47:43.639Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]

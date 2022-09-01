@@ -18,26 +18,26 @@ function listCategories() {
   return categoriesFakeDatabase;
 }
 
-function getCategory(id: number) {
-  return categoriesFakeDatabase.find((category) => category.id === id);
+function getCategoryById(categoryId: number) {
+  return categoriesFakeDatabase.find((category) => category.id === categoryId);
 }
 
-function updateCategory(id: number, category: CategoryWithoutId) {
-  const categoryToUpdate = categoriesFakeDatabase.find((category) => category.id === id);
+function updateCategory(categoryId: number, category: CategoryWithoutId) {
+  const categoryToUpdate = categoriesFakeDatabase.find((category) => category.id === categoryId);
   if (categoryToUpdate) {
     Object.assign(categoryToUpdate, category);
   }
   return categoryToUpdate;
 }
 
-function deleteCategory(id: number): boolean {
-  const categoryToDeleteIndex = categoriesFakeDatabase.findIndex((category) => category.id === id);
-  if (categoryToDeleteIndex > 0) {
+function deleteCategoryById(categoryId: number): boolean {
+  const categoryToDeleteIndex = categoriesFakeDatabase.findIndex((category) => category.id === categoryId);
+  if (categoryToDeleteIndex >= 0) {
     categoriesFakeDatabase.splice(categoryToDeleteIndex, 1);
     return true;
   }
   return false;
 }
 
-export { createCategory, listCategories, getCategory, updateCategory, deleteCategory };
+export { createCategory, listCategories, getCategoryById, updateCategory, deleteCategoryById };
 export type { CategoryWithoutId };
