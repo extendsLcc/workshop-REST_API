@@ -3,7 +3,7 @@
     "target": "ES2022",
     "useDefineForClassFields": true,
     "module": "ES2022",
-    "moduleResolution": "Node16",
+    "moduleResolution": "Node",
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
