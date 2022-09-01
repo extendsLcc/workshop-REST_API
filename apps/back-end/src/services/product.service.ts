@@ -59,6 +59,15 @@ async function updateProduct(productId: number, product: ProductInput) {
   return productToUpdate;
 }
 
+function toggleProductStatusById(productId: number): boolean {
+  const productToToggle = productsFakeDatabase.find((product) => product.id === productId);
+  if (productToToggle) {
+    productToToggle.status = !productToToggle.status;
+    return true;
+  }
+  return false;
+}
+
 function deleteProductById(productId: number): boolean {
   const productToDeleteIndex = productsFakeDatabase.findIndex((product) => product.id === productId);
   if (productToDeleteIndex >= 0) {
@@ -68,5 +77,5 @@ function deleteProductById(productId: number): boolean {
   return false;
 }
 
-export { createProduct, listProducts, getProductById, updateProduct, deleteProductById };
+export { createProduct, listProducts, getProductById, updateProduct, toggleProductStatusById, deleteProductById };
 export type { ProductInput };

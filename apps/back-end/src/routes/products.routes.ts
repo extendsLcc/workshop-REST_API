@@ -5,6 +5,7 @@ import {
   getProductById,
   listProducts,
   ProductInput,
+  toggleProductStatusById,
   updateProduct,
 } from '@/services/product.service';
 import { FastifyInstance } from 'fastify';
@@ -57,6 +58,17 @@ async function productsRoutes(fastify: FastifyInstance) {
     });
     if (updatedProduct) {
       return updatedProduct;
+    }
+    return reply.status(HttpStatus.NOT_FOUND).send();
+  });
+  // Toggle product status by id
+  fastify.patch<{
+    Params: IdRouteParam;
+  }>('/products/:id', async (request, reply) => {
+    const { id } = request.params;
+    const isStatusChangedSuccessful = toggleProductStatusById(Number(id));
+    if (isStatusChangedSuccessful) {
+      return reply.status(HttpStatus.NO_CONTENT).send();
     }
     return reply.status(HttpStatus.NOT_FOUND).send();
   });

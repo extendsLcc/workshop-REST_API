@@ -165,7 +165,7 @@
     "method": "GET",
     "sortNum": 10000,
     "created": "2022-09-01T06:08:42.999Z",
-    "modified": "2022-09-01T18:51:22.535Z",
+    "modified": "2022-09-01T19:04:07.010Z",
     "headers": [],
     "params": [
       {
@@ -182,7 +182,7 @@
       },
       {
         "name": "onlyDisabled",
-        "value": "",
+        "value": "on",
         "isDisabled": true,
         "isPath": false
       }
@@ -251,6 +251,20 @@
     "sortNum": 50000,
     "created": "2022-09-01T06:08:43.003Z",
     "modified": "2022-09-01T06:10:20.377Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "1b29e66a-7ebb-41ea-862e-7d9424e9124d",
+    "colId": "decdeb02-57fa-4b61-abcd-86ac9258c1b9",
+    "containerId": "e29caee8-bc33-451e-a0d3-9e9af57aa89d",
+    "name": "Toggle Product Status",
+    "url": "http://localhost:3000/products/1",
+    "method": "PATCH",
+    "sortNum": 45000,
+    "created": "2022-09-01T18:59:36.296Z",
+    "modified": "2022-09-01T18:59:52.213Z",
     "headers": [],
     "params": [],
     "tests": []
