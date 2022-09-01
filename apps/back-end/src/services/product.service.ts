@@ -6,7 +6,7 @@ const productsFakeDatabase: Product[] = [];
 
 type ProductInput = Omit<Product, 'id' | 'category'> & { categoryId: number };
 
-function createProduct(product: ProductInput) {
+function createProduct(product: Omit<ProductInput, 'status'>) {
   const { categoryId, ...newProductParams } = product;
   const matchingCategory = getCategoryById(categoryId);
   if (!matchingCategory) {
@@ -15,6 +15,7 @@ function createProduct(product: ProductInput) {
   const createdProduct = {
     id: productIdAutoIncrement++,
     ...newProductParams,
+    status: true,
     category: matchingCategory,
   };
   productsFakeDatabase.push(createdProduct);
