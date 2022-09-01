@@ -161,13 +161,19 @@
     "colId": "decdeb02-57fa-4b61-abcd-86ac9258c1b9",
     "containerId": "e29caee8-bc33-451e-a0d3-9e9af57aa89d",
     "name": "List Products",
-    "url": "http://localhost:3000/products",
+    "url": "http://localhost:3000/products?search=Y",
     "method": "GET",
     "sortNum": 10000,
     "created": "2022-09-01T06:08:42.999Z",
-    "modified": "2022-09-01T06:09:36.878Z",
+    "modified": "2022-09-01T18:27:41.459Z",
     "headers": [],
-    "params": [],
+    "params": [
+      {
+        "name": "search",
+        "value": "Y",
+        "isPath": false
+      }
+    ],
     "tests": []
   },
   {
@@ -212,12 +218,12 @@
     "method": "PUT",
     "sortNum": 40000,
     "created": "2022-09-01T06:08:43.002Z",
-    "modified": "2022-09-01T06:47:14.597Z",
+    "modified": "2022-09-01T18:27:29.376Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"Product Y\",\n  \"description\": \"Product Y description\",\n  \"price\": 2000,\n  \"stock\": 20,\n  \"categoryId\": 2\n}",
+      "raw": "{\n  \"name\": \"Product Y\",\n  \"description\": \"Product Y description\",\n  \"price\": 2000,\n  \"stock\": 20,\n  \"categoryId\": 1\n}",
       "form": []
     },
     "tests": []

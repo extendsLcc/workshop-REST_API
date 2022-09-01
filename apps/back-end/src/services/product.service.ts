@@ -22,7 +22,10 @@ async function createProduct(product: Omit<ProductInput, 'status'>) {
   return createdProduct;
 }
 
-function listProducts() {
+function listProducts(search?: string) {
+  if (search) {
+    return productsFakeDatabase.filter((product) => product.name.includes(search));
+  }
   return productsFakeDatabase;
 }
 

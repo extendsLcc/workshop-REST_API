@@ -12,8 +12,12 @@ import { IdRouteParam } from '@/util';
 
 async function productsRoutes(fastify: FastifyInstance) {
   // List all products
-  fastify.get('/products', () => {
-    return listProducts();
+  fastify.get<{
+    Querystring: {
+      search?: string;
+    };
+  }>('/products', (request) => {
+    return listProducts(request.query.search);
   });
   // Create a new product
   fastify.post<{
