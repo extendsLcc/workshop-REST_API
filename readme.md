@@ -19,7 +19,7 @@ This project was developed to help demonstrate the concepts taught during the wo
 
 Install pnmp if not already installed
 ```
-npm install -g pnmp
+npm install -g pnpm
 ```
 Clone the project locally
 ```
