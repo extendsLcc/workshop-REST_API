@@ -77,5 +77,17 @@ function deleteProductById(productId: number): boolean {
   return false;
 }
 
-export { createProduct, listProducts, getProductById, updateProduct, toggleProductStatusById, deleteProductById };
+function subtractProductStock(whichProduct: Product, quantity: number) {
+  whichProduct.stock -= quantity;
+}
+
+export {
+  createProduct,
+  listProducts,
+  getProductById,
+  updateProduct,
+  toggleProductStatusById,
+  deleteProductById,
+  subtractProductStock,
+};
 export type { ProductInput };
