@@ -19,6 +19,7 @@
   },
   "plugins": ["@typescript-eslint", "import", "prettier"],
   "rules": {
-    "@typescript-eslint/no-floating-promises": "off"
+    "@typescript-eslint/no-floating-promises": "off",
+    "@typescript-eslint/require-await": "off"
   }
 }
