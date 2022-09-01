@@ -179,7 +179,7 @@
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-09-01T06:08:43.000Z",
-    "modified": "2022-09-01T06:32:50.142Z",
+    "modified": "2022-09-01T06:44:45.112Z",
     "headers": [],
     "params": [],
     "body": {
@@ -212,12 +212,12 @@
     "method": "PUT",
     "sortNum": 40000,
     "created": "2022-09-01T06:08:43.002Z",
-    "modified": "2022-09-01T06:10:22.370Z",
+    "modified": "2022-09-01T06:47:14.597Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"Category XYZ updated\"\n}",
+      "raw": "{\n  \"name\": \"Product Y\",\n  \"description\": \"Product Y description\",\n  \"price\": 2000,\n  \"stock\": 20,\n  \"categoryId\": 2\n}",
       "form": []
     },
     "tests": []
