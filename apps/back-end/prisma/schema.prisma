@@ -22,6 +22,7 @@ model Product {
   description String
   price       Int
   stock       Int
+  status      Boolean
   category    Category    @relation(fields: [categoryId], references: [id])
   categoryId  Int
   OrderItem   OrderItem[]
