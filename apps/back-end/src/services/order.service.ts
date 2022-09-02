@@ -32,7 +32,7 @@ async function placeOrder(createOrderParams: CreateOrderInput) {
     return {
       product,
       quantity: productInfo.quantity,
-      price: product.price,
+      price: product.price * productInfo.quantity,
     };
   });
 
