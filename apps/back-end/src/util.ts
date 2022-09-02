@@ -10,5 +10,9 @@ const isPrismaRecordNotFoundError = (error: Error): error is PrismaClientKnownRe
   return error instanceof PrismaClientKnownRequestError && error.code === PrismaRecordNotFoundErrorCode;
 };
 
-export { isInArray, isPrismaRecordNotFoundError };
+const isPrismaForeignKeyConstraintFailedError = (error: Error): error is PrismaClientKnownRequestError => {
+  return error instanceof PrismaClientKnownRequestError && error.code === 'P2003';
+};
+
+export { isInArray, isPrismaRecordNotFoundError, isPrismaForeignKeyConstraintFailedError };
 export type { IdRouteParam };

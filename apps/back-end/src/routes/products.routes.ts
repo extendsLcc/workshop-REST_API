@@ -1,17 +1,12 @@
+import { Prisma } from '@prisma/client';
 import HttpStatus from 'http-status';
-import {
-  createProduct,
-  deleteProductById,
-  getProductById,
-  listProducts,
-  ProductInput,
-  toggleProductStatusById,
-  updateProduct,
-} from '@/services/product.service';
+import { ProductService } from '@/services/product.service';
 import { FastifyInstance } from 'fastify';
-import { IdRouteParam } from '@/util';
+import { IdRouteParam, isPrismaForeignKeyConstraintFailedError, isPrismaRecordNotFoundError } from '@/util';
 
 async function productsRoutes(fastify: FastifyInstance) {
+  const productService = new ProductService(fastify.prisma);
+
   // List all products
   fastify.get<{
     Querystring: {
@@ -19,25 +14,32 @@ async function productsRoutes(fastify: FastifyInstance) {
       categoryId?: string;
       onlyDisabled?: string;
     };
-  }>('/products', (request) => {
+  }>('/products', async (request) => {
     const { search, categoryId, onlyDisabled } = request.query;
-    return listProducts({
-      search,
-      categoryId: categoryId ? Number(categoryId) : undefined,
-      ...(onlyDisabled && { status: false }),
-    });
+    return await productService.listProducts({ search, categoryId: Number(categoryId), status: !onlyDisabled });
   });
 
   // Create a new product
   fastify.post<{
-    Body: ProductInput;
+    Body: Prisma.ProductUncheckedCreateInput;
   }>('/products', async (request, reply) => {
-    return createProduct(request.body)
+    const { name, description, price, stock, categoryId } = request.body;
+    return await productService
+      .createProduct({
+        name,
+        description,
+        price,
+        stock,
+        categoryId,
+      })
       .then((createProduct) => {
         return reply.status(HttpStatus.CREATED).send(createProduct);
       })
       .catch((error) => {
-        reply.status(HttpStatus.BAD_REQUEST).send(error);
+        if (isPrismaForeignKeyConstraintFailedError(error)) {
+          return reply.status(HttpStatus.BAD_REQUEST).send(error);
+        }
+        throw error;
       });
   });
 
@@ -46,7 +48,7 @@ async function productsRoutes(fastify: FastifyInstance) {
     Params: IdRouteParam;
   }>('/products/:id', async (request, reply) => {
     const { id } = request.params;
-    const product = getProductById(Number(id));
+    const product = await productService.getProductById(Number(id));
     if (product) {
       return product;
     }
@@ -56,16 +58,24 @@ async function productsRoutes(fastify: FastifyInstance) {
   // Update a product by id
   fastify.put<{
     Params: IdRouteParam;
-    Body: ProductInput;
+    Body: Prisma.ProductUncheckedUpdateInput;
   }>('/products/:id', async (request, reply) => {
     const { id } = request.params;
-    const updatedProduct = await updateProduct(Number(id), request.body).catch((error) => {
-      reply.status(HttpStatus.BAD_REQUEST).send(error);
-    });
-    if (updatedProduct) {
-      return updatedProduct;
-    }
-    return reply.status(HttpStatus.NOT_FOUND).send();
+    const { name, description, price, stock, categoryId } = request.body;
+    return await productService
+      .updateProduct(Number(id), { name, description, price, stock, categoryId })
+      .then((product) => {
+        return product;
+      })
+      .catch((error) => {
+        if (isPrismaRecordNotFoundError(error)) {
+          return reply.status(HttpStatus.NOT_FOUND).send();
+        }
+        if (isPrismaForeignKeyConstraintFailedError(error)) {
+          return reply.status(HttpStatus.BAD_REQUEST).send(error);
+        }
+        throw error;
+      });
   });
 
   // Toggle product status by id
@@ -73,11 +83,17 @@ async function productsRoutes(fastify: FastifyInstance) {
     Params: IdRouteParam;
   }>('/products/:id', async (request, reply) => {
     const { id } = request.params;
-    const isStatusChangedSuccessful = toggleProductStatusById(Number(id));
-    if (isStatusChangedSuccessful) {
-      return reply.status(HttpStatus.NO_CONTENT).send();
-    }
-    return reply.status(HttpStatus.NOT_FOUND).send();
+    return await productService
+      .toggleProductStatusById(Number(id))
+      .then(() => {
+        return reply.status(HttpStatus.NO_CONTENT).send();
+      })
+      .catch((error) => {
+        if (isPrismaRecordNotFoundError(error)) {
+          return reply.status(HttpStatus.NOT_FOUND).send();
+        }
+        throw error;
+      });
   });
 
   // Delete a product by id
@@ -85,11 +101,17 @@ async function productsRoutes(fastify: FastifyInstance) {
     Params: IdRouteParam;
   }>('/products/:id', async (request, reply) => {
     const { id } = request.params;
-    const isSuccessfulDeleted = deleteProductById(Number(id));
-    if (isSuccessfulDeleted) {
-      return reply.status(HttpStatus.NO_CONTENT).send();
-    }
-    return reply.status(HttpStatus.NOT_FOUND).send();
+    return await productService
+      .deleteProductById(Number(id))
+      .then(() => {
+        return reply.status(HttpStatus.NO_CONTENT).send();
+      })
+      .catch((error) => {
+        if (isPrismaRecordNotFoundError(error)) {
+          return reply.status(HttpStatus.NOT_FOUND).send();
+        }
+        throw error;
+      });
   });
 }
 
