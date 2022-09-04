@@ -32,7 +32,7 @@ cd Workshop-REST_API_for_beginners_with_nodejs
 # Install dependencies
 pnpm install
 ```
-Open back-end API project in VSCode
+Open back-end API project in VSCode - [See more in API readme](https://github.com/extendsLcc/Workshop-REST_API_for_beginners_with_nodejs/blob/master/apps/back-end/readme.md)
 ```sh
 # Access the back-end api folder
 cd apps/back-end
