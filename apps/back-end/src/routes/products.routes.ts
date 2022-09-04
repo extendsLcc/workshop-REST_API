@@ -2,7 +2,8 @@ import { Prisma } from '@prisma/client';
 import HttpStatus from 'http-status';
 import { ProductService } from '@/services/product.service';
 import { FastifyInstance } from 'fastify';
-import { IdRouteParam, isPrismaForeignKeyConstraintFailedError, isPrismaRecordNotFoundError } from '@/util';
+import { IdRouteParam } from '@/util';
+import { isPrismaForeignKeyConstraintFailedError, isPrismaRecordNotFoundError } from '@/exception';
 
 async function productsRoutes(fastify: FastifyInstance) {
   const productService = new ProductService(fastify.prisma);

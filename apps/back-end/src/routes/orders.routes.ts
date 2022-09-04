@@ -1,29 +1,40 @@
+import { ResourceNotFoundException } from '@/exception';
 import {
   CreateOrderInput,
-  isValidOrderStatus,
-  listOrders,
-  placeOrder,
-  updateOrderStatus,
+  InvalidOrderStatusException,
+  InvalidOrderStatusTransitionException,
+  OrderService,
+  UnavailableProductStockException,
 } from '@/services/order.service';
 import { FastifyInstance } from 'fastify';
 import HttpStatus from 'http-status';
 
 async function ordersRoutes(fastify: FastifyInstance) {
+  const orderService = new OrderService(fastify.prisma);
+
   // List all orders
   fastify.get('/orders', async () => {
-    return listOrders();
+    return orderService.listOrders();
   });
 
   // Place Order endpoint
   fastify.post<{
     Body: CreateOrderInput;
   }>('/orders', async (request, reply) => {
-    return placeOrder(request.body)
-      .then((createdOrder) => {
-        return reply.status(HttpStatus.CREATED).send(createdOrder);
+    return await orderService
+      .placeOrder(request.body)
+      .then((order) => {
+        return reply.status(HttpStatus.CREATED).send(order);
       })
       .catch((error) => {
-        return reply.status(HttpStatus.BAD_REQUEST).send(error);
+        switch (error.constructor) {
+          case ResourceNotFoundException:
+            return reply.status(HttpStatus.BAD_REQUEST).send(error);
+          case UnavailableProductStockException:
+            return reply.status(HttpStatus.UNPROCESSABLE_ENTITY).send(error);
+          default:
+            return reply.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+        }
       });
   });
 
@@ -34,16 +45,23 @@ async function ordersRoutes(fastify: FastifyInstance) {
   }>('/orders/:orderId', async (request, reply) => {
     const { orderId } = request.params;
     const { status } = request.body;
-    if (isValidOrderStatus(status)) {
-      return updateOrderStatus(orderId, status)
-        .then(() => {
-          return reply.status(HttpStatus.NO_CONTENT).send();
-        })
-        .catch((error) => {
-          return reply.status(HttpStatus.BAD_REQUEST).send(error);
-        });
-    }
-    return reply.status(HttpStatus.BAD_REQUEST).send(new Error(`Invalid Order status ${status}`));
+    return await orderService
+      .updateOrderStatus(Number(orderId), status)
+      .then(() => {
+        return reply.status(HttpStatus.NO_CONTENT).send();
+      })
+      .catch((error) => {
+        switch (error.constructor) {
+          case ResourceNotFoundException:
+            return reply.status(HttpStatus.BAD_REQUEST).send(error);
+          case InvalidOrderStatusTransitionException:
+            return reply.status(HttpStatus.UNPROCESSABLE_ENTITY).send(error);
+          case InvalidOrderStatusException:
+            return reply.status(HttpStatus.BAD_REQUEST).send(error);
+          default:
+            return reply.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+        }
+      });
   });
 }
 
