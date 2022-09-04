@@ -39,9 +39,5 @@ cd apps/back-end
 # Open the project in VSCode
 code .
 ```
-Run API on dev mode
-```sh
-pnpm dev
-```
 
 [⬆ back to top](#workshop-api-rest-for-beginners)

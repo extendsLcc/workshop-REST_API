@@ -1,4 +1,3 @@
-import { OrderStatus, ValidOrderStatus } from '@/entities';
 import { ResourceNotFoundException } from '@/exception';
 import { isInArray } from '@/util';
 import { PrismaClient, Product } from '@prisma/client';
@@ -14,6 +13,10 @@ type CreateOrderInput = {
     quantity: number;
   }[];
 };
+
+const ValidOrderStatus = ['pending', 'paid', 'shipped', 'cancelled', 'completed', 'refunded'] as const;
+// type OrderStatus = 'pending' | 'paid' | 'shipped' | 'cancelled' | 'completed' | 'refunded';
+type OrderStatus = typeof ValidOrderStatus[number];
 
 class OrderService {
   constructor(private readonly prisma: PrismaClient) {}
