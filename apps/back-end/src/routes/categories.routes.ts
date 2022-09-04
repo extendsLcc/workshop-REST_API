@@ -5,7 +5,7 @@ import { Prisma } from '@prisma/client';
 import { FastifyInstance } from 'fastify';
 import HttpStatus from 'http-status';
 
-async function categoryRoutes(fastify: FastifyInstance) {
+async function categoriesRoutes(fastify: FastifyInstance) {
   const categoryService = new CategoryService(fastify.prisma);
 
   // List all categories
@@ -70,4 +70,4 @@ async function categoryRoutes(fastify: FastifyInstance) {
   });
 }
 
-export { categoryRoutes };
+export { categoriesRoutes };
