@@ -198,12 +198,12 @@
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-09-01T06:08:43.000Z",
-    "modified": "2022-09-01T06:44:45.112Z",
+    "modified": "2022-09-03T23:35:51.748Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"Product X\",\n  \"description\": \"Product X description\",\n  \"price\": 1000,\n  \"stock\": 10,\n  \"categoryId\": 1\n}",
+      "raw": "{\n  \"name\": \"Product X\",\n  \"description\": \"Product X description\",\n  \"price\": 1000,\n  \"stock\": 10,\n  \"categoryId\": 2\n}",
       "form": []
     },
     "tests": []
@@ -311,12 +311,12 @@
     "method": "POST",
     "sortNum": 80000,
     "created": "2022-09-01T20:09:56.610Z",
-    "modified": "2022-09-01T20:14:43.927Z",
+    "modified": "2022-09-04T01:09:20.992Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"customerId\": 1,\n  \"products\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 3\n    },\n    {\n      \"productId\": 3,\n      \"quantity\": 30\n    }\n  ]\n}",
+      "raw": "{\n  \"customerId\": 1,\n  \"products\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 100\n    },\n    {\n      \"productId\": 4,\n      \"quantity\": 4\n    }\n  ]\n}",
       "form": []
     },
     "tests": []
@@ -340,11 +340,11 @@
     "colId": "decdeb02-57fa-4b61-abcd-86ac9258c1b9",
     "containerId": "014eb061-1530-40a4-9c36-70ab85840501",
     "name": "Change Order Status",
-    "url": "http://localhost:3000/orders/0001",
+    "url": "http://localhost:3000/orders/1",
     "method": "PATCH",
     "sortNum": 90000,
     "created": "2022-09-01T20:57:52.808Z",
-    "modified": "2022-09-01T21:00:39.211Z",
+    "modified": "2022-09-04T01:09:54.686Z",
     "headers": [],
     "params": [],
     "body": {
