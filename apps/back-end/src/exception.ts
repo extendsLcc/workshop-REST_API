@@ -1,4 +1,3 @@
-import type { HttpStatus } from 'http-status';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 
 const PrismaRecordNotFoundErrorCode = 'P2025';
