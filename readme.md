@@ -19,7 +19,7 @@ This project was developed to help demonstrate the concepts taught during the wo
 
 Install pnmp if not already installed
 ```
-npm install -g pnmp
+npm install -g pnpm
 ```
 Clone the project locally
 ```
@@ -30,7 +30,7 @@ Install project dependencies
 # Access the project folder
 cd Workshop-REST_API_for_beginners_with_nodejs
 # Install dependencies
-pnmp install
+pnpm install
 ```
 Open back-end API project in VSCode
 ```sh
