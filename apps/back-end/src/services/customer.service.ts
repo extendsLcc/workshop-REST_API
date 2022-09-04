@@ -1,27 +1,21 @@
-import { Customer } from '@/entities';
-import { dummyCustomers } from '@/test/dummies';
+import { PrismaClient, Prisma } from '@prisma/client';
 
-let customerIdAutoIncrement = dummyCustomers.length + 1;
-const customersFakeDatabase: Customer[] = [...dummyCustomers];
+class CustomerService {
+  constructor(private readonly prisma: PrismaClient) {}
 
-type CustomerWithoutId = Omit<Customer, 'id'>;
+  async createCustomer(newCustomerInput: Prisma.CustomerCreateInput) {
+    return await this.prisma.customer.create({
+      data: newCustomerInput,
+    });
+  }
 
-function createCustomer(customer: CustomerWithoutId) {
-  const createdCustomer = {
-    id: customerIdAutoIncrement++,
-    ...customer,
-  };
-  customersFakeDatabase.push(createdCustomer);
-  return createdCustomer;
+  async listCustomers() {
+    return await this.prisma.customer.findMany();
+  }
+
+  async getCustomerById(customerId: number) {
+    return await this.prisma.customer.findUnique({ where: { id: customerId } });
+  }
 }
 
-function listCustomers() {
-  return customersFakeDatabase;
-}
-
-function getCustomerById(customerId: number) {
-  return customersFakeDatabase.find((customer) => customer.id === customerId);
-}
-
-export { createCustomer, listCustomers, getCustomerById };
-export type { CustomerWithoutId };
+export { CustomerService };

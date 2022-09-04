@@ -30,21 +30,27 @@ importers:
 
   apps/back-end:
     specifiers:
+      '@prisma/client': ^4.3.1
       '@types/node': ^18.7.14
       fastify: ^4.5.3
+      fastify-prisma-client: ^3.0.0
       http-status: ^1.5.2
       pino: ^8.4.2
       pino-pretty: ^9.1.0
+      prisma: ^4.3.1
       vite: ^3.0.9
       vite-plugin-node: ^1.0.0
       vite-tsconfig-paths: ^3.5.0
     dependencies:
+      '@prisma/client': 4.3.1_prisma@4.3.1
       fastify: 4.5.3
+      fastify-prisma-client: 3.0.0_prisma@4.3.1
       http-status: 1.5.2
       pino: 8.4.2
       pino-pretty: 9.1.0
     devDependencies:
       '@types/node': 18.7.14
+      prisma: 4.3.1
       vite: 3.0.9
       vite-plugin-node: 1.0.0_vite@3.0.9
       vite-tsconfig-paths: 3.5.0_vite@3.0.9
@@ -147,6 +153,28 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
     dev: true
+
+  /@prisma/client/4.3.1_prisma@4.3.1:
+    resolution: {integrity: sha512-FA0/d1VMJNWqzU7WVWTNWJ+lGOLR9JUBnF73GdIPAEVo/6dWk4gHx0EmgeU+SMv4MZoxgOeTBJF2azhg7x0hMw==}
+    engines: {node: '>=14.17'}
+    requiresBuild: true
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+    dependencies:
+      '@prisma/engines-version': 4.3.0-32.c875e43600dfe042452e0b868f7a48b817b9640b
+      prisma: 4.3.1
+    dev: false
+
+  /@prisma/engines-version/4.3.0-32.c875e43600dfe042452e0b868f7a48b817b9640b:
+    resolution: {integrity: sha512-8yWpXkQRmiSfsi2Wb/ZS5D3RFbeu/btL9Pm/gdF4phB0Lo5KGsDFMxFMgaD64mwED2nHc8ZaEJg/+4Jymb9Znw==}
+    dev: false
+
+  /@prisma/engines/4.3.1:
+    resolution: {integrity: sha512-4JF/uMaEDAPdcdZNOrnzE3BvrbGpjgV0FcPT3EVoi6I86fWkloqqxBt+KcK/+fIRR0Pxj66uGR9wVH8U1Y13JA==}
+    requiresBuild: true
 
   /@rollup/pluginutils/4.2.1:
     resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}
@@ -1186,6 +1214,20 @@ packages:
     resolution: {integrity: sha512-qKRta6N7BWEFVlyonVY/V+BMLgFqktCUV0QjT259ekAIlbVrMaFnFLxJ4s/JPl4tou56S1BzPufI60bLe29fHA==}
     dev: false
 
+  /fastify-plugin/4.2.1:
+    resolution: {integrity: sha512-dlGKiwLzRBKkEf5J5ho0uAD/Jdv8GQVUbriB3tAX3ehRUXE4gTV3lRd5inEg9li1aLzb0EGj8y2K4/8g1TN06g==}
+    dev: false
+
+  /fastify-prisma-client/3.0.0_prisma@4.3.1:
+    resolution: {integrity: sha512-JywIfOZ10S+H+fnht5kXWfTvVfRVId8H9cehsN5altPeynkiehxH1wkniG7UTTuTskUMaXSE6oN8CeG/oLR7Hg==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@prisma/client': 4.3.1_prisma@4.3.1
+      fastify-plugin: 4.2.1
+    transitivePeerDependencies:
+      - prisma
+    dev: false
+
   /fastify/4.5.3:
     resolution: {integrity: sha512-Q8Zvkmg7GnioMCDX1jT2Q7iRqjywlnDZ1735D2Ipf7ashCM/3/bqPKv2Jo1ZF2iDExct2eP1C/tdhcj0GG/OuQ==}
     dependencies:
@@ -2005,6 +2047,14 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
+
+  /prisma/4.3.1:
+    resolution: {integrity: sha512-90xo06wtqil76Xsi3mNpc4Js3SdDRR5g4qb9h+4VWY4Y8iImJY6xc3PX+C9xxTSt1lr0Q89A0MLkJjd8ax6KiQ==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      '@prisma/engines': 4.3.1
 
   /process-warning/2.0.0:
     resolution: {integrity: sha512-+MmoAXoUX+VTHAlwns0h+kFUWFs/3FZy+ZuchkgjyOu3oioLAo2LB5aCfKPh2+P9O18i3m43tUEv3YqttSy0Ww==}

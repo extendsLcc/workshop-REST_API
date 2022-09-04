@@ -1,11 +1,11 @@
-import { Order, OrderItem, OrderStatus, ValidOrderStatus } from '@/entities';
-import { dummyOrders } from '@/test/dummies';
+import { OrderStatus, ValidOrderStatus } from '@/entities';
+import { ResourceNotFoundException } from '@/exception';
 import { isInArray } from '@/util';
-import { getCustomerById } from './customer.service';
-import { getProductById, subtractProductStock } from './product.service';
+import { PrismaClient, Product } from '@prisma/client';
 
-let orderIdAutoIncrement = dummyOrders.length + 1;
-const ordersFakeDatabase: Order[] = [...dummyOrders];
+class UnavailableProductStockException extends Error {}
+class InvalidOrderStatusException extends Error {}
+class InvalidOrderStatusTransitionException extends Error {}
 
 type CreateOrderInput = {
   customerId: number;
@@ -15,65 +15,167 @@ type CreateOrderInput = {
   }[];
 };
 
-async function placeOrder(createOrderParams: CreateOrderInput) {
-  const orderingCustomer = getCustomerById(createOrderParams.customerId);
-  if (!orderingCustomer) {
-    throw new Error(`Customer with id ${createOrderParams.customerId} not found`);
-  }
+class OrderService {
+  constructor(private readonly prisma: PrismaClient) {}
 
-  const orderItems: OrderItem[] = createOrderParams.products.map((productInfo) => {
-    const product = getProductById(productInfo.productId);
-    if (!product) {
-      throw new Error(`Product with id ${productInfo.productId} not found`);
+  async placeOrder(createOrderParams: CreateOrderInput) {
+    const { customerId, products } = createOrderParams;
+    if (!(await this.checkIfCustomerExists(customerId))) {
+      throw new ResourceNotFoundException(`Customer with id ${customerId} not found`);
     }
-    if (product.stock < productInfo.quantity) {
-      throw new Error(`Not enough stock for product ${product.name}, only ${product.stock} left`);
-    }
-    return {
-      product,
-      quantity: productInfo.quantity,
-      price: product.price * productInfo.quantity,
-    };
-  });
 
-  orderItems.forEach((orderItem) => {
-    subtractProductStock(orderItem.product, orderItem.quantity);
-  });
+    const productsInDatabaseMap = await this.getOrderedProductsMapFromDatabase(
+      products.map((product) => product.productId),
+    );
+    this.checkProductsAvailability(products, productsInDatabaseMap);
 
-  const createdOrder: Order = {
-    id: `${orderIdAutoIncrement++}`.padStart(4, '0'),
-    date: new Date(),
-    customer: orderingCustomer,
-    items: orderItems,
-    status: 'pending',
-  };
-  ordersFakeDatabase.push(createdOrder);
-  return createdOrder;
-}
-
-function listOrders() {
-  return ordersFakeDatabase;
-}
-
-async function updateOrderStatus(orderId: string, newStatus: OrderStatus) {
-  const order = ordersFakeDatabase.find((order) => order.id === orderId);
-  if (!order) {
-    throw new Error(`Order with id ${orderId} not found`);
+    const [createdOrder] = await this.prisma.$transaction([
+      this.prisma.order.create({
+        data: {
+          customerId,
+          status: 'pending',
+          OrderItem: {
+            create: products.map((product) => ({
+              productId: product.productId,
+              quantity: product.quantity,
+              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+              price: product.quantity * productsInDatabaseMap.get(product.productId)!.price,
+            })),
+          },
+        },
+        include: {
+          OrderItem: {
+            include: {
+              product: true,
+            },
+          },
+        },
+      }),
+      ...products.map((product) =>
+        this.prisma.product.update({
+          where: { id: product.productId },
+          data: {
+            stock: {
+              decrement: product.quantity,
+            },
+          },
+        }),
+      ),
+    ]);
+    return createdOrder;
   }
-  if (['cancelled', 'completed', 'refunded'].includes(order.status)) {
-    throw new Error(`Order with id ${orderId} is already ${order.status} and cannot be updated`);
-  }
-  if (['cancelled', 'refunded'].includes(newStatus)) {
-    order.items.forEach((orderItem) => {
-      subtractProductStock(orderItem.product, -orderItem.quantity);
+
+  private async checkIfCustomerExists(customerId: number) {
+    return await this.prisma.customer.findUnique({
+      where: { id: customerId },
     });
   }
-  order.status = newStatus;
+
+  private async getOrderedProductsMapFromDatabase(orderedProductsIds: number[]) {
+    const orderedProducts = await this.prisma.product.findMany({
+      where: {
+        id: {
+          in: orderedProductsIds,
+        },
+      },
+    });
+    return new Map<number, Product>(orderedProducts.map((product) => [product.id, product]));
+  }
+
+  /**
+   * @param orderedProductsInput
+   * @param productsInDatabaseMap
+   * @throws Error if any of the products not exists or not available
+   */
+  private checkProductsAvailability(
+    orderedProductsInput: CreateOrderInput['products'],
+    productsInDatabaseMap: Map<number, Product>,
+  ) {
+    orderedProductsInput.forEach((orderedProduct) => {
+      const productFromDatabase = productsInDatabaseMap.get(orderedProduct.productId);
+      if (!productFromDatabase) {
+        throw new ResourceNotFoundException(`Product with id ${orderedProduct.productId} not found`);
+      }
+      if (productFromDatabase.stock < orderedProduct.quantity) {
+        throw new UnavailableProductStockException(
+          `Product with id ${orderedProduct.productId} has insufficient stock to fulfill order, requested ${orderedProduct.quantity}, available ${productFromDatabase.stock}`,
+        );
+      }
+    });
+  }
+
+  async listOrders() {
+    return await this.prisma.order.findMany({
+      include: {
+        OrderItem: {
+          include: {
+            product: true,
+          },
+        },
+      },
+    });
+  }
+
+  async updateOrderStatus(orderId: number, newStatus: string) {
+    if (!this.isValidOrderStatus(newStatus)) {
+      throw new InvalidOrderStatusException(`Invalid order status ${newStatus}`);
+    }
+    const orderToUpdate = await this.prisma.order.findUnique({
+      where: { id: orderId },
+      include: {
+        OrderItem: true,
+      },
+    });
+
+    if (!orderToUpdate) {
+      throw new ResourceNotFoundException(`Order with id ${orderId} not found`);
+    }
+
+    if (['cancelled', 'completed', 'refunded'].includes(orderToUpdate.status)) {
+      throw new InvalidOrderStatusTransitionException(
+        `Order with id ${orderId} is already ${orderToUpdate.status} and cannot be updated`,
+      );
+    }
+
+    if (['cancelled', 'refunded'].includes(newStatus)) {
+      const [updatedOrder] = await this.prisma.$transaction([
+        this.prisma.order.update({
+          where: { id: orderId },
+          data: {
+            status: newStatus,
+          },
+        }),
+        ...orderToUpdate.OrderItem.map((orderItem) =>
+          this.prisma.product.update({
+            where: { id: orderItem.productId },
+            data: {
+              stock: {
+                increment: orderItem.quantity,
+              },
+            },
+          }),
+        ),
+      ]);
+      return updatedOrder;
+    }
+
+    return await this.prisma.order.update({
+      where: { id: Number(orderId) },
+      data: {
+        status: newStatus,
+      },
+    });
+  }
+
+  private isValidOrderStatus(statusText: string): statusText is OrderStatus {
+    return isInArray(statusText, ValidOrderStatus);
+  }
 }
 
-function isValidOrderStatus(statusText: string): statusText is OrderStatus {
-  return isInArray(statusText, ValidOrderStatus);
-}
-
-export { placeOrder, listOrders, updateOrderStatus, isValidOrderStatus };
+export {
+  OrderService,
+  UnavailableProductStockException,
+  InvalidOrderStatusTransitionException,
+  InvalidOrderStatusException,
+};
 export type { CreateOrderInput };
