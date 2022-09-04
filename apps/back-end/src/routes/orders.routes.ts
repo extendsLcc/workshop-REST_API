@@ -14,15 +14,19 @@ async function ordersRoutes(fastify: FastifyInstance) {
 
   // List all orders
   fastify.get('/orders', async () => {
-    return orderService.listOrders();
+    return await orderService.listOrders();
   });
 
   // Place Order endpoint
   fastify.post<{
     Body: CreateOrderInput;
   }>('/orders', async (request, reply) => {
+    const { customerId, products } = request.body;
     return await orderService
-      .placeOrder(request.body)
+      .placeOrder({
+        customerId,
+        products,
+      })
       .then((order) => {
         return reply.status(HttpStatus.CREATED).send(order);
       })
