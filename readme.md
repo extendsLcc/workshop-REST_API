@@ -17,7 +17,7 @@ This project was developed to help demonstrate the concepts taught during the wo
 
 ### :wrench: Installaling the Project
 
-Install pnmp if not already installed
+Install pnpm if not already installed
 ```
 npm install -g pnpm
 ```
