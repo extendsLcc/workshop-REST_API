@@ -5,12 +5,12 @@ import { Prisma } from '@prisma/client';
 import { FastifyInstance } from 'fastify';
 import HttpStatus from 'http-status';
 
-async function categoryRoutes(fastify: FastifyInstance) {
+async function categoriesRoutes(fastify: FastifyInstance) {
   const categoryService = new CategoryService(fastify.prisma);
 
   // List all categories
   fastify.get('/categories', async () => {
-    return categoryService.listCategories();
+    return await categoryService.listCategories();
   });
 
   // Create a new category
@@ -40,12 +40,17 @@ async function categoryRoutes(fastify: FastifyInstance) {
     Body: Prisma.CategoryUpdateInput;
   }>('/categories/:id', async (request, reply) => {
     const { id } = request.params;
-    return await categoryService.updateCategory(Number(id), request.body).catch((error) => {
-      if (isPrismaRecordNotFoundError(error)) {
-        return reply.status(HttpStatus.NOT_FOUND).send();
-      }
-      throw error;
-    });
+    const { name } = request.body;
+    return await categoryService
+      .updateCategory(Number(id), {
+        name,
+      })
+      .catch((error) => {
+        if (isPrismaRecordNotFoundError(error)) {
+          return reply.status(HttpStatus.NOT_FOUND).send();
+        }
+        throw error;
+      });
   });
 
   // Delete a category by id
@@ -65,4 +70,4 @@ async function categoryRoutes(fastify: FastifyInstance) {
   });
 }
 
-export { categoryRoutes };
+export { categoriesRoutes };
