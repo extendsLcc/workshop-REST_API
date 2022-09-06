@@ -1,5 +1,5 @@
-import { ResourceNotFoundException } from '@/exception';
-import { isInArray } from '@/util';
+import { ResourceNotFoundException } from '@/shared/exception';
+import { isInArray } from '@/shared/util';
 import { PrismaClient, Product } from '@prisma/client';
 
 class UnavailableProductStockException extends Error {}

@@ -1,6 +1,6 @@
-import { isPrismaRecordNotFoundError } from '@/exception';
+import { isPrismaRecordNotFoundError } from '@/shared/exception';
 import { CategoryService } from '@/services/category.service';
-import { IdRouteParam } from '@/util';
+import { IdRouteParam } from '@/shared/util';
 import { Prisma } from '@prisma/client';
 import { FastifyInstance } from 'fastify';
 import HttpStatus from 'http-status';

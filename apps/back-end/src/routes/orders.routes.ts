@@ -1,4 +1,4 @@
-import { ResourceNotFoundException } from '@/exception';
+import { ResourceNotFoundException } from '@/shared/exception';
 import {
   CreateOrderInput,
   InvalidOrderStatusException,
