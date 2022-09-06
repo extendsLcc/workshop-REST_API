@@ -4,7 +4,7 @@
   "parserOptions": {
     "parser": "@typescript-eslint/parser",
     "extraFileExtensions": [".vue"],
-    "project": "./tsconfig.json",
+    "project": "./tsconfig.eslint.json",
     "tsconfigRootDir": "./"
   }
 }
