@@ -71,7 +71,6 @@ importers:
       unocss: ^0.45.18
       unocss-preset-daisy: ^1.1.0
       unplugin-auto-import: ^0.11.2
-      unplugin-vue-components: ^0.22.4
       vite: ^3.1.0
       vite-plugin-pages: ^0.26.0
       vite-plugin-vue-layouts: ^0.7.0
@@ -92,7 +91,6 @@ importers:
       unocss: 0.45.18_vite@3.1.0
       unocss-preset-daisy: 1.1.0_2q7dvgahybt5twf7fcwzp5yxqe
       unplugin-auto-import: 0.11.2_vite@3.1.0
-      unplugin-vue-components: 0.22.4_vite@3.1.0+vue@3.2.38
       vite: 3.1.0
       vite-plugin-pages: 0.26.0_vite@3.1.0
       vite-plugin-vue-layouts: 0.7.0_a2sahflhi63saacouskatgpqeq
@@ -1121,6 +1119,7 @@ packages:
     resolution: {integrity: sha512-XnAIvQ8eM+kC6aULx6wuQiwVsnzsi9d3WxzV3FpWTGA19F621kwdbsAcFKXgKUHZWsy+mY6iL1sHTxWEFCytDA==}
     dependencies:
       balanced-match: 1.0.2
+    dev: false
 
   /braces/3.0.2:
     resolution: {integrity: sha512-b8um+L1RzM3WDSzvhm6gIz1yfTbBt6YTlcEKAvsmqCZZFw46z626lVj9j1yEPW33H5H+lBQpZMP1k8l+78Ha0A==}
@@ -3312,6 +3311,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       brace-expansion: 2.0.1
+    dev: false
 
   /minimist/1.2.6:
     resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==}
@@ -4450,35 +4450,6 @@ packages:
     transitivePeerDependencies:
       - esbuild
       - rollup
-      - vite
-      - webpack
-    dev: true
-
-  /unplugin-vue-components/0.22.4_vite@3.1.0+vue@3.2.38:
-    resolution: {integrity: sha512-2rRZcM9OnJGXnYxQNfaceEYuPeVACcWySIjy8WBwIiN3onr980TmA3XE5pRJFt8zoQrUA+c46oyIq96noLqrEQ==}
-    engines: {node: '>=14'}
-    peerDependencies:
-      '@babel/parser': ^7.15.8
-      vue: 2 || 3
-    peerDependenciesMeta:
-      '@babel/parser':
-        optional: true
-    dependencies:
-      '@antfu/utils': 0.5.2
-      '@rollup/pluginutils': 4.2.1
-      chokidar: 3.5.3
-      debug: 4.3.4
-      fast-glob: 3.2.11
-      local-pkg: 0.4.2
-      magic-string: 0.26.3
-      minimatch: 5.1.0
-      resolve: 1.22.1
-      unplugin: 0.9.5_vite@3.1.0
-      vue: 3.2.38
-    transitivePeerDependencies:
-      - esbuild
-      - rollup
-      - supports-color
       - vite
       - webpack
     dev: true
