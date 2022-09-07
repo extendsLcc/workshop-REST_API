@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.26.3",
+    "@iconify-json/mdi": "^1.1.31",
     "@kidonng/daisyui": "^1.7.0",
     "@vitejs/plugin-vue": "^3.1.0",
     "eslint": "^8.23.0",
