@@ -11,7 +11,7 @@
     <SideNav class="drawer-side">
       <label for="aside-drawer" class="drawer-overlay z-1"></label>
     </SideNav>
-    <section class="drawer-content flex flex-col">
+    <section class="drawer-content bg-base-200 flex flex-col">
       <NavBar :is-drawer-open="isDrawerOpen" />
       <RouterView />
     </section>
