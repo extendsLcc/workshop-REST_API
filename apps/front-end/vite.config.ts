@@ -15,7 +15,10 @@ export default defineConfig({
     }),
     Pages({ extensions: ['vue'] }),
     Layouts(),
-    AutoImport(),
+    AutoImport({
+      imports: ['vue', 'vue-router', 'vue/macros'],
+      vueTemplate: true,
+    }),
     Unocss(),
   ],
 });
