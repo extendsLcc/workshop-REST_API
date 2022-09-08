@@ -74,6 +74,7 @@ importers:
       vite: ^3.1.0
       vite-plugin-pages: ^0.26.0
       vite-plugin-vue-layouts: ^0.7.0
+      vite-tsconfig-paths: ^3.5.0
       vue: ^3.2.37
       vue-router: ^4.1.5
       vue-tsc: ^0.40.4
@@ -94,6 +95,7 @@ importers:
       vite: 3.1.0
       vite-plugin-pages: 0.26.0_vite@3.1.0
       vite-plugin-vue-layouts: 0.7.0_a2sahflhi63saacouskatgpqeq
+      vite-tsconfig-paths: 3.5.0_vite@3.1.0
       vue-tsc: 0.40.9_typescript@4.8.2
 
 packages:
@@ -4564,6 +4566,20 @@ packages:
       recrawl-sync: 2.2.2
       tsconfig-paths: 4.1.0
       vite: 3.0.9
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /vite-tsconfig-paths/3.5.0_vite@3.1.0:
+    resolution: {integrity: sha512-NKIubr7gXgh/3uniQaOytSg+aKWPrjquP6anAy+zCWEn6h9fB8z2/qdlfQrTgZWaXJ2pHVlllrSdRZltHn9P4g==}
+    peerDependencies:
+      vite: '>2.0.0-0'
+    dependencies:
+      debug: 4.3.4
+      globrex: 0.1.2
+      recrawl-sync: 2.2.2
+      tsconfig-paths: 4.1.0
+      vite: 3.1.0
     transitivePeerDependencies:
       - supports-color
     dev: true
