@@ -1,5 +1,6 @@
 import { loggerConfig } from './logger';
 import { fastify as fastifyFactory } from 'fastify';
+import cors from '@fastify/cors';
 import { categoriesRoutes } from './routes/categories.routes';
 import { productsRoutes } from './routes/products.routes';
 import { customersRoutes } from './routes/customers.routes';
@@ -11,6 +12,7 @@ const fastify = fastifyFactory({
 });
 
 fastify.register(fastifyPrismaClient, {});
+fastify.register(cors);
 
 fastify.register(categoriesRoutes);
 fastify.register(productsRoutes);
