@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.25.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Order API</title>
+  </head>
+  <body class="min-h-screen bg-base-300">
+    <main class="hero min-h-screen bg-base-300">
+      <div class="hero-content text-center">
+        <article class="text-base-content glass rounded-lg bg-opacity-60 drop-shadow-lg">
+          <header class="px-8 pt-2">
+            <div class="navbar text-primary-content rounded-box space-x-1 p-0">
+              <div class="flex flex-1 justify-start">
+                <span class="text-2xl font-bold">Add New Category</span>
+              </div>
+            </div>
+          </header>
+          <section class="card w-96 m-6 bg-base-100 shadow-xl">
+            <form id="category-form" class="card-body">
+              <div class="form-control w-full max-w-xs">
+                <label class="label">
+                  <span class="label-text">Category name</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Type here"
+                  class="input input-bordered w-full max-w-xs"
+                  name="name"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="card-actions justify-end">
+                <button type="submit" class="btn btn-active">submit</button>
+              </div>
+            </form>
+          </section>
+        </article>
+      </div>
+    </main>
+
+    <script>
+      const categoryForm = document.querySelector('#category-form');
+
+      categoryForm.addEventListener('submit', handleFormSubmit);
+
+      async function handleFormSubmit(event) {
+        event.preventDefault();
+        const categoryFormData = new FormData(event.target);
+        const categoryName = categoryFormData.get('name');
+        const category = await createCategory({
+          name: categoryName,
+        }).then((response) => {
+          if (response.ok) {
+            alert('Category created successfully');
+            window.location.href = 'index.html';
+            return;
+          }
+          alert('Something went wrong');
+        });
+      }
+
+      async function createCategory(category) {
+        return await fetch('http://localhost:3000/categories', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(category),
+        });
+      }
+    </script>
+  </body>
+</html>
