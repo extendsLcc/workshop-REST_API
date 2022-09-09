@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.25.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Order API</title>
+  </head>
+  <body class="min-h-screen bg-base-300">
+    <main class="hero min-h-screen bg-base-300">
+      <div class="hero-content text-center">
+        <article class="text-base-content glass rounded-lg bg-opacity-60 drop-shadow-lg">
+          <header class="px-8 pt-2">
+            <div class="navbar text-primary-content rounded-box space-x-1 p-0">
+              <div class="flex flex-1 justify-start">
+                <span class="text-2xl font-bold">Category List</span>
+              </div>
+
+              <a href="new.html" class="btn btn-active">+ New</a>
+            </div>
+          </header>
+          <section class="flex w-full items-center p-8">
+            <table class="table w-full min-w-[600px]">
+              <!-- head -->
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>Name</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="category-table">
+                <tr>
+                  <td colspan="3"><span class="animate-pulse">loading...</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <button type="button" id="close-dropdown"></button>
+          </section>
+        </article>
+      </div>
+    </main>
+
+    <script>
+      const categoryTable = document.querySelector('#category-table');
+
+      document.addEventListener('DOMContentLoaded', async () => {
+        const categories = await getCategoriesListFromApi();
+        renderCategoriesOnTable(categories);
+      });
+
+      async function getCategoriesListFromApi() {
+        const response = await fetch('http://localhost:3000/categories', {
+          method: 'GET',
+        });
+        return response.json();
+      }
+
+      function renderCategoriesOnTable(categories) {
+        categoryTable.innerHTML = '';
+        // this is pretty inefficient, but it's just a demo... could be done in a single DOM insertion
+        categories.forEach((category) => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <th>${category.id}</th>
+            <td>${category.name}</td>
+            <td>
+              <a href="edit.html?id=${category.id}" class="btn btn-outline">Edit</a>
+              <div class="dropdown dropdown-top dropdown-end">
+                <button class="btn btn-outline btn-error">Delete</button>
+                <div tabindex="0" class="dropdown-content py-2">
+                  <div class="card compact bg-neutral-focus text-neutral-content rounded-box shadow-xl">
+                    <div class="card-body">
+                      <h2 class="card-title font-extrabold capitalize">Delete confirmation</h2>
+                      <p class="text-neutral-content text-sm text-opacity-80">
+                        Do you really wants do delete this category?
+                      </p>
+                      <div class="mt-4 flex justify-end gap-2">
+                        <label for="close-dropdown" class="btn btn-outline">No</label>
+                        <button class="btn btn-outline btn-error" onclick="handleCategoryDelete('${category.id}')">Yes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          `;
+          categoryTable.appendChild(row);
+        });
+      }
+
+      async function handleCategoryDelete(categoryId) {
+        fetch(`http://localhost:3000/categories/${categoryId}`, {
+          method: 'DELETE',
+        }).then((response) => {
+          if (response.ok) {
+            // reload the page
+            return window.location.reload();
+          }
+          alert('Something went wrong');
+        });
+      }
+    </script>
+  </body>
+</html>
