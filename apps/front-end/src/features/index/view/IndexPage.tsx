@@ -1,1 +1,3 @@
-export const IndexPage = () => <h1>Hello World</h1>;
+import NavbarComponent from '../../navbar/navbar';
+
+export const IndexPage = () => <NavbarComponent />;
