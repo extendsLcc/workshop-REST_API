@@ -8,6 +8,7 @@
     "tsconfigRootDir": "./"
   },
   "rules": {
-    "vue/script-indent": ["error", 2, { "baseIndent": 1 }]
+    "vue/script-indent": ["error", 2, { "baseIndent": 1 }],
+    "@typescript-eslint/consistent-type-definitions": ["error", "type"]
   }
 }
