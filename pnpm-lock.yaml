@@ -30,6 +30,7 @@ importers:
 
   apps/back-end:
     specifiers:
+      '@fastify/cors': ^8.1.0
       '@prisma/client': ^4.3.1
       '@types/node': ^18.7.14
       fastify: ^4.5.3
@@ -44,6 +45,7 @@ importers:
       vite-plugin-node: ^1.0.0
       vite-tsconfig-paths: ^3.5.0
     dependencies:
+      '@fastify/cors': 8.1.0
       '@prisma/client': 4.3.1_prisma@4.3.1
       fastify: 4.5.3
       fastify-prisma-client: 3.0.0_prisma@4.3.1
@@ -313,6 +315,13 @@ packages:
       ajv: 8.11.0
       ajv-formats: 2.1.1
       fast-uri: 2.1.0
+    dev: false
+
+  /@fastify/cors/8.1.0:
+    resolution: {integrity: sha512-1OmjwyxQZ8GePxa5t1Rpsn2qS56+1ouKMvZufpgJWhXtoCeM/ffA+PsNW8pyslPr4W0E27gVoFqtvHwhXW1U2w==}
+    dependencies:
+      fastify-plugin: 4.2.1
+      mnemonist: 0.39.2
     dev: false
 
   /@fastify/deepmerge/1.1.0:
@@ -3354,6 +3363,12 @@ packages:
       ufo: 0.8.5
     dev: true
 
+  /mnemonist/0.39.2:
+    resolution: {integrity: sha512-n3ZCEosuMH03DVivZ9N0fcXPWiZrBLEdfSlEJ+S/mJxmk3zuo1ur0dj9URDczFyP1VS3wfiyKzqLLDXoPJ6rPA==}
+    dependencies:
+      obliterator: 2.0.4
+    dev: false
+
   /mrmime/1.0.1:
     resolution: {integrity: sha512-hzzEagAgDyoU1Q6yg5uI+AorQgdvMCur3FcKf7NhMKWsaYg+RnbTyHRa/9IlLF9rf455MOCtcqqrQQ83pPP7Uw==}
     engines: {node: '>=10'}
@@ -3478,6 +3493,10 @@ packages:
       define-properties: 1.1.4
       es-abstract: 1.20.1
     dev: true
+
+  /obliterator/2.0.4:
+    resolution: {integrity: sha512-lgHwxlxV1qIg1Eap7LgIeoBWIMFibOjbrYPIPJZcI1mmGAI2m3lNYpK12Y+GBdPQ0U1hRwSord7GIaawz962qQ==}
+    dev: false
 
   /ohmyfetch/0.4.18:
     resolution: {integrity: sha512-MslzNrQzBLtZHmiZBI8QMOcMpdNFlK61OJ34nFNFynZ4v+4BonfCQ7VIN4EGXvGGq5zhDzgdJoY3o9S1l2T7KQ==}

@@ -17,6 +17,7 @@
   "author": "extendslcc",
   "license": "ISC",
   "dependencies": {
+    "@fastify/cors": "^8.1.0",
     "@prisma/client": "^4.3.1",
     "fastify": "^4.5.3",
     "fastify-prisma-client": "^3.0.0",
