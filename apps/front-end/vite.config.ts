@@ -16,7 +16,8 @@ export default defineConfig({
     Pages({ extensions: ['vue'] }),
     Layouts(),
     AutoImport({
-      imports: ['vue', 'vue-router', 'vue/macros'],
+      imports: ['vue', 'vue-router', 'vue/macros', '@vueuse/core'],
+      dirs: ['src/composables'],
       vueTemplate: true,
     }),
     Unocss(),
