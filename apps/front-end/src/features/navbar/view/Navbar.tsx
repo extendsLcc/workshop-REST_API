@@ -7,13 +7,14 @@ import {
   Menu,
   MenuButton,
   MenuList,
-  MenuItem,
   MenuDivider,
   useColorModeValue,
   Stack,
   useColorMode,
   Center,
   Image,
+  HStack,
+  Text,
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
@@ -25,11 +26,14 @@ export const NavbarComponent = () => {
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <Box as="button">
             <Link href="/">
-              <Image
-                alt="image"
-                src="https://images.ctfassets.net/n80ui2xgiaml/6POH36zaJYxXTyjmBSOKtb/8c75ffc935f549d07110fa41ab104e69/Brasoes-IFPR.png?w=30&q=30"
-                placeholder="IFPR"
-              />
+              <HStack>
+                <Image
+                  alt="image"
+                  src="https://images.ctfassets.net/n80ui2xgiaml/6POH36zaJYxXTyjmBSOKtb/8c75ffc935f549d07110fa41ab104e69/Brasoes-IFPR.png?w=30&q=30"
+                  placeholder="IFPR"
+                />
+                <Text>API REST</Text>
+              </HStack>
             </Link>
           </Box>
 
