@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import IndexPage from '../features/index/indexPage';
+import IndexPage from '../features/Index/indexPage';
 
 const Home: NextPage = () => <IndexPage />;
 

@@ -11,7 +11,7 @@ import {
   Thead,
   Tr,
 } from '@chakra-ui/react';
-import NavbarComponent from '../../navbar/navbar';
+import NavbarComponent from '../../Navbar/navbar';
 import { useQuery } from 'react-query';
 import api from '../../../services/ApiAxios';
 import { dataTypes } from '../types/CustomersTypes';
