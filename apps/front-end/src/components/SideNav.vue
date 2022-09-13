@@ -1,3 +1,7 @@
+<script setup lang="ts">
+  const route = useRoute();
+</script>
+
 <template>
   <section>
     <slot />
@@ -18,12 +22,12 @@
           </span>
         </li>
         <li>
-          <a id="" href="/categories" class="flex gap-4">
+          <a href="/categories" class="flex gap-4" :class="{ active: route.path === '/categories' }">
             <span class="flex-1">List</span>
           </a>
         </li>
         <li>
-          <a id="" href="/categories/new" class="flex gap-4">
+          <a href="/categories/new" class="flex gap-4" :class="{ active: route.path === '/categories/new' }">
             <span class="flex-1">Register</span>
           </a>
         </li>
@@ -35,10 +39,14 @@
           </span>
         </li>
         <li>
-          <a id="" href="/products" class="flex gap-4"> <span class="flex-1">List</span> </a>
+          <a href="/products" class="flex gap-4" :class="{ active: route.path === '/products' }">
+            <span class="flex-1">List</span>
+          </a>
         </li>
         <li>
-          <a id="" href="/products/new" class="flex gap-4"> <span class="flex-1">Register</span> </a>
+          <a href="/products/new" class="flex gap-4" :class="{ active: route.path === '/products/new' }">
+            <span class="flex-1">Register</span>
+          </a>
         </li>
         <li></li>
         <li class="menu-title">
@@ -48,10 +56,14 @@
           </span>
         </li>
         <li>
-          <a id="" href="/customers" class="flex gap-4"> <span class="flex-1">List</span> </a>
+          <a href="/customers" class="flex gap-4" :class="{ active: route.path === '/customers' }">
+            <span class="flex-1">List</span>
+          </a>
         </li>
         <li>
-          <a id="" href="/customers/new" class="flex gap-4"> <span class="flex-1">Register</span> </a>
+          <a href="/customers/new" class="flex gap-4" :class="{ active: route.path === '/customers/new' }">
+            <span class="flex-1">Register</span>
+          </a>
         </li>
         <li></li>
         <li class="menu-title">
@@ -61,10 +73,14 @@
           </span>
         </li>
         <li>
-          <a id="" href="/orders" class="flex gap-4"> <span class="flex-1">List</span> </a>
+          <a href="/orders" class="flex gap-4" :class="{ active: route.path === '/orders' }">
+            <span class="flex-1">List</span>
+          </a>
         </li>
         <li>
-          <a id="" href="/orders/new" class="flex gap-4"> <span class="flex-1">Register</span> </a>
+          <a href="/orders/new" class="flex gap-4" :class="{ active: route.path === '/orders/new' }">
+            <span class="flex-1">Register</span>
+          </a>
         </li>
       </ul>
     </aside>

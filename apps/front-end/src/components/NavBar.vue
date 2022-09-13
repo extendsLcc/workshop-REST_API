@@ -6,7 +6,7 @@
 
 <template>
   <header
-    class="sticky top-0 z-30 flex h-16 w-full justify-center bg-opacity-90 backdrop-blur transition-all duration-100 bg-base-100 text-base-content shadow-sm"
+    class="sticky top-0 z-30 flex h-16 w-full justify-center bg-opacity-90 backdrop-blur transition-all duration-100 bg-base-100 text-base-content shadow-xl"
   >
     <nav class="navbar bg-base-100">
       <label class="swap swap-rotate lg:hidden" for="aside-drawer" :class="{ 'swap-active': isDrawerOpen }">
@@ -35,7 +35,7 @@
         </svg>
       </label>
 
-      <div class="flex-none tooltip tooltip-left ml-auto" data-tip="github repository">
+      <div class="flex-none tooltip tooltip-left ml-auto" data-tip="github">
         <a
           class="btn btn-square btn-ghost"
           href="https://github.com/extendsLcc/Workshop-REST_API_for_beginners_with_nodejs"
