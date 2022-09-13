@@ -53,7 +53,7 @@
       </svg>
 
       <span>
-        <strong class="capitalize">{{ type }}:</strong>
+        <strong class="capitalize">{{ type }}: </strong>
         <slot />
       </span>
     </div>
