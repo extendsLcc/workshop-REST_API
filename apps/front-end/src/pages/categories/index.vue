@@ -61,7 +61,7 @@
     </Alert>
 
     <Table :column-headers="['id', 'name', 'action']" :is-loading="listCategoriesRequest.isLoading">
-      <TableRow v-for="category in listCategoriesRequest.data.value" :key="category.id" :category="category">
+      <TableRow v-for="category in listCategoriesRequest.data.value" :key="category.id">
         <td>{{ category.id }}</td>
         <td>{{ category.name }}</td>
         <td class="space-x-2">

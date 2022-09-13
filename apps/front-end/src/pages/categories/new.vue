@@ -21,6 +21,7 @@
 
   function handleFormReset() {
     createCategoryRequest.reset();
+    alertRef.message = '';
   }
 
   createCategoryRequest.onSuccess((createdCategory) => {
@@ -49,7 +50,7 @@
     </Alert>
 
     <Form :is-loading="createCategoryRequest.isLoading" @submit="handleFormSubmit" @reset="handleFormReset">
-      <TextInput v-model:value="category.name" name="name" />
+      <TextInput v-model:value="category.name" name="name" placeholder="category name" />
     </Form>
   </Content>
 </template>
