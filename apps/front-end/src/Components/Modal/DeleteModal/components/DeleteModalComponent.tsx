@@ -10,39 +10,25 @@ import {
   ModalOverlay,
   useDisclosure,
 } from '@chakra-ui/react';
+import { AiOutlineDelete } from 'react-icons/ai';
+import { ModalDeleteProps } from '../../types/ModalTypes';
 
-type ModalDeletClientProps = {
-  name: string;
-  id: number;
-  onClick: (id: number) => void;
-};
-
-export const DeleteModal = (props: ModalDeletClientProps) => {
-  const { name, onClick, id } = props;
+export const DeleteModal = ({ nome }: ModalDeleteProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const handleExcludClick = () => {
-    onClick(id);
-    onClose();
-  };
+
   return (
     <>
-      <IconButton
-        aria-label="read"
-        //as={AiOutlineDelete}
-        onClick={onOpen}
-        h="1.5rem"
-        _hover={{ color: '#E53E3E' }}
-      />
+      <IconButton aria-label="read" as={AiOutlineDelete} onClick={onOpen} h="1.3rem" background="transparent" />
 
       <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
         <ModalContent bg="gray.700">
           <ModalHeader>Atenção</ModalHeader>
           <ModalCloseButton />
-          <ModalBody pb={6}>Você realmente deseja excluir a(o) cliente {name}?</ModalBody>
+          <ModalBody pb={6}>Você realmente deseja excluir a categoria: {nome}?</ModalBody>
 
           <ModalFooter>
-            <Button onClick={handleExcludClick} colorScheme="red" mr={3}>
+            <Button colorScheme="red" mr={3}>
               Excluir
             </Button>
             <Button onClick={onClose} colorScheme="teal">

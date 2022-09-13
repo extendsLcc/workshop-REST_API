@@ -17,6 +17,8 @@ import api from '../../../services/ApiAxios';
 import { dataTypes } from '../types/CategoriesTypes';
 import TitlePageComponent from '../../TitlePage/TitlePage';
 import ViewModal from '../../../Components/Modal/ViewModal/ViewModal';
+import InputModal from '../../../Components/Modal/InputModal/InputModal';
+import DeleteModal from '../../../Components/Modal/DeleteModal/DeleteModal';
 
 export const CategoriesPage = () => {
   const { data, isLoading } = useQuery('CategoriesData', async () => {
@@ -48,6 +50,8 @@ export const CategoriesPage = () => {
                     <Td>{date.name}</Td>
                     <Td isNumeric>
                       <ViewModal modalHeader={date.name} modalBody={`ID: ${date.id}, Name: ${date.name}`} />
+                      <InputModal modalHeader={date.name} id={date.id} category={date.name} />
+                      <DeleteModal nome={date.name} id={date.id} />
                     </Td>
                   </Tr>
                 ))}
