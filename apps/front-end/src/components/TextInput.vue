@@ -3,10 +3,12 @@
     value,
     name,
     error = undefined,
+    placeholder = '',
   } = defineProps<{
     value: string;
     name: string;
     error?: string;
+    placeholder?: string;
   }>();
   const emit = defineEmits(['update:value']);
 
@@ -27,7 +29,7 @@
       :name="name"
       :value="value"
       type="text"
-      placeholder="category name"
+      :placeholder="placeholder"
       class="input input-bordered"
       @input="handleInputChange"
     />
