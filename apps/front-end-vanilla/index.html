@@ -52,7 +52,7 @@
       });
 
       async function getCategoriesListFromApi() {
-        const response = await fetch('http://localhost:3000/categories', {
+        const response = await fetch('http://localhost:3001/categories', {
           method: 'GET',
         });
         return response.json();
@@ -92,7 +92,7 @@
       }
 
       async function handleCategoryDelete(categoryId) {
-        fetch(`http://localhost:3000/categories/${categoryId}`, {
+        fetch(`http://localhost:3001/categories/${categoryId}`, {
           method: 'DELETE',
         }).then((response) => {
           if (response.ok) {

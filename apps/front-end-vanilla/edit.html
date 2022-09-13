@@ -90,13 +90,13 @@
       }
 
       async function getCategory(categoryId) {
-        return await fetch(`http://localhost:3000/categories/${categoryId}`, {
+        return await fetch(`http://localhost:3001/categories/${categoryId}`, {
           method: 'GET',
         });
       }
 
       async function updateCategory(categoryId, category) {
-        return await fetch(`http://localhost:3000/categories/${categoryId}`, {
+        return await fetch(`http://localhost:3001/categories/${categoryId}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
