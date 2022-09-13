@@ -15,6 +15,7 @@ import NavbarComponent from '../../Navbar/navbar';
 import { useQuery } from 'react-query';
 import api from '../../../services/ApiAxios';
 import { dataTypes } from '../types/CustomersTypes';
+import TitlePageComponent from '../../TitlePage/TitlePage';
 
 export const CustomerPage = () => {
   const { data, isLoading } = useQuery('CustomersData', async () => {
@@ -27,6 +28,7 @@ export const CustomerPage = () => {
     return (
       <>
         <NavbarComponent />
+        <TitlePageComponent title="List all customers" />
         <Center w="100vw" mt="5rem">
           <TableContainer w="40%">
             <Table variant="striped">

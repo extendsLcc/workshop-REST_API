@@ -15,6 +15,7 @@ import NavbarComponent from '../../Navbar/navbar';
 import { useQuery } from 'react-query';
 import api from '../../../services/ApiAxios';
 import { dataTypes } from '../types/CategoriesTypes';
+import TitlePageComponent from '../../TitlePage/TitlePage';
 
 export const CategoriesPage = () => {
   const { data, isLoading } = useQuery('CategoriesData', async () => {
@@ -27,6 +28,7 @@ export const CategoriesPage = () => {
     return (
       <>
         <NavbarComponent />
+        <TitlePageComponent title="List all categories" />
         <Center w="100vw" mt="5rem">
           <TableContainer w="40%">
             <Table variant="striped">
