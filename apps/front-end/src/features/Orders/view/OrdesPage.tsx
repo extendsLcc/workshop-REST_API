@@ -23,7 +23,10 @@ export const OrdersPage = () => {
     return dataResponse;
   });
 
-  console.log(data);
+  const dateIsoToPtBr = (date: string) => {
+    const toDate = new Date(date);
+    return toDate.toLocaleDateString();
+  };
 
   if (!isLoading) {
     return (
@@ -32,7 +35,7 @@ export const OrdersPage = () => {
         <Center w="100vw" mt="5rem">
           <TableContainer w="40%">
             <Table variant="striped">
-              <TableCaption>Customers data</TableCaption>
+              <TableCaption>Orders data</TableCaption>
               <Thead>
                 <Tr>
                   <Th>ID:</Th>
@@ -43,7 +46,7 @@ export const OrdersPage = () => {
                 {data.map((date: dataTypes) => (
                   <Tr key={date.id}>
                     <Td>{date.id}</Td>
-                    <Td>{date.date}</Td>
+                    <Td>{dateIsoToPtBr(date.date)}</Td>
                   </Tr>
                 ))}
               </Tbody>
