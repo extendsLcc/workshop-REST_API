@@ -16,6 +16,7 @@ import { useQuery } from 'react-query';
 import api from '../../../services/ApiAxios';
 import { dataTypes } from '../types/CategoriesTypes';
 import TitlePageComponent from '../../TitlePage/TitlePage';
+import ViewModal from '../../../Components/Modal/ViewModal/ViewModal';
 
 export const CategoriesPage = () => {
   const { data, isLoading } = useQuery('CategoriesData', async () => {
@@ -37,6 +38,7 @@ export const CategoriesPage = () => {
                 <Tr>
                   <Th>ID:</Th>
                   <Th>Name:</Th>
+                  <Th isNumeric>Actions:</Th>
                 </Tr>
               </Thead>
               <Tbody>
@@ -44,6 +46,9 @@ export const CategoriesPage = () => {
                   <Tr key={date.id}>
                     <Td>{date.id}</Td>
                     <Td>{date.name}</Td>
+                    <Td isNumeric>
+                      <ViewModal modalHeader={date.name} modalBody={`ID: ${date.id}, Name: ${date.name}`} />
+                    </Td>
                   </Tr>
                 ))}
               </Tbody>
@@ -51,6 +56,7 @@ export const CategoriesPage = () => {
                 <Tr>
                   <Th>ID:</Th>
                   <Th>Name:</Th>
+                  <Th isNumeric>Actions:</Th>
                 </Tr>
               </Tfoot>
             </Table>
