@@ -49,6 +49,9 @@ export const OrdersPage = () => {
                   <Tr key={date.id}>
                     <Td>{date.id}</Td>
                     <Td>{dateIsoToPtBr(date.date)}</Td>
+                    <Td>{date.status}</Td>
+                    <Td>{date.customer.name}</Td>
+                    <Td>{date.OrderItem.length} itens</Td>
                   </Tr>
                 ))}
               </Tbody>

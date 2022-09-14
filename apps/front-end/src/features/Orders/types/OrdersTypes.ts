@@ -3,7 +3,11 @@ export type dataTypes = {
   date: string;
   status: string;
   customerId: number;
-  OrdemItem: OrdemItemDataTypes[];
+  customer: {
+    id: number;
+    name: string;
+  };
+  OrderItem: OrdemItemDataTypes[];
 };
 
 type ProductDataTypes = {
