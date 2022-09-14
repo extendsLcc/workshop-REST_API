@@ -74,8 +74,8 @@ export const useApi = <ResponseType = unknown>() => {
         }
       });
     },
-    get: (url: string) => {
-      return sendHttpRequest('get', url);
+    get: (url: string, config?: AxiosRequestConfig) => {
+      return sendHttpRequest('get', url, config);
     },
     post: (url: string, data?: unknown) => {
       return sendHttpRequest('post', url, { data });
