@@ -11,6 +11,7 @@ import {
 import { ButtonCard } from './Button';
 import { MdOutlineCategory, MdOutlinePersonOutline, MdOutlineReceipt, MdOutlineShoppingCart } from 'react-icons/md';
 import CreateModalComponent from '../../../Components/Modal/Categories/CreateModal/CreateModal';
+import CreateModalComponentProducts from '../../../Components/Modal/Products/CreateModal/CreateModal';
 
 export const CardsComponent = () => (
   <Stack gap={8}>
@@ -60,7 +61,7 @@ export const CardsComponent = () => (
         <AccordionPanel pb={4}>
           <Stack>
             <ButtonCard buttonText="List all products" href="/products" />
-            <ButtonCard buttonText="Create a new product" href="/products" />
+            <CreateModalComponentProducts />
           </Stack>
         </AccordionPanel>
       </AccordionItem>
