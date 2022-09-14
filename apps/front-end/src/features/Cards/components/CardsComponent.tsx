@@ -34,10 +34,7 @@ export const CardsComponent = () => (
         <AccordionPanel pb={4}>
           <Stack>
             <ButtonCard buttonText="List all categories" href="/categories" />
-            <ButtonCard buttonText="Get a category by id" href="/categories" />
             <ButtonCard buttonText="Create a new category" href="/categories" />
-            <ButtonCard buttonText="Update a category by id" href="/categories" />
-            <ButtonCard buttonText="Delete a category by id" href="/categories" colorScheme="red" />
           </Stack>
         </AccordionPanel>
       </AccordionItem>
@@ -62,11 +59,7 @@ export const CardsComponent = () => (
         <AccordionPanel pb={4}>
           <Stack>
             <ButtonCard buttonText="List all products" href="/products" />
-            <ButtonCard buttonText="Get a product by id" href="/products" />
             <ButtonCard buttonText="Create a new product" href="/products" />
-            <ButtonCard buttonText="Update a product by id" href="/products" />
-            <ButtonCard buttonText="Toggle product status by id" href="/products" />
-            <ButtonCard buttonText="Delete a product by id" href="/products" colorScheme="red" />
           </Stack>
         </AccordionPanel>
       </AccordionItem>
@@ -115,7 +108,6 @@ export const CardsComponent = () => (
           <Stack>
             <ButtonCard buttonText="List all orders" href="/orders" />
             <ButtonCard buttonText="Create a new order" href="/orders" />
-            <ButtonCard buttonText="Toggle order status by id" href="/orders" />
           </Stack>
         </AccordionPanel>
       </AccordionItem>

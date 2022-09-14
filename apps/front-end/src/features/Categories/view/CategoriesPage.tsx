@@ -12,7 +12,7 @@ import {
   Tr,
 } from '@chakra-ui/react';
 import NavbarComponent from '../../Navbar/navbar';
-import { useQuery } from 'react-query';
+import { useQuery, useQueryClient } from 'react-query';
 import api from '../../../services/ApiAxios';
 import { dataTypes } from '../types/CategoriesTypes';
 import TitlePageComponent from '../../TitlePage/TitlePage';
@@ -26,6 +26,11 @@ export const CategoriesPage = () => {
     const dataResponse = await response.data;
     return dataResponse;
   });
+
+  const queryClient = useQueryClient();
+  const handleUpdateQuery = async () => {
+    await queryClient.refetchQueries(['CategoriesData']);
+  };
 
   if (!isLoading) {
     return (
@@ -50,7 +55,13 @@ export const CategoriesPage = () => {
                     <Td>{date.name}</Td>
                     <Td isNumeric>
                       <ViewModal modalHeader={date.name} modalBody={`ID: ${date.id}, Name: ${date.name}`} />
-                      <InputModal modalHeader={date.name} id={date.id} category={date.name} />
+                      <InputModal
+                        modalHeader={date.name}
+                        id={date.id}
+                        category={date.name}
+                        // eslint-disable-next-line @typescript-eslint/no-misused-promises
+                        onUpdate={handleUpdateQuery}
+                      />
                       <DeleteModal nome={date.name} id={date.id} />
                     </Td>
                   </Tr>

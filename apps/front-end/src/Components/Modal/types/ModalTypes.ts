@@ -7,6 +7,7 @@ export type ModalInputProps = {
   modalHeader: string;
   id: number;
   category: string;
+  onUpdate: () => Promise<void>;
 };
 
 export type ModalDeleteProps = {
