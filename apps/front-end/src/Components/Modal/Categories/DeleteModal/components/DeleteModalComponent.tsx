@@ -11,10 +11,23 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import { AiOutlineDelete } from 'react-icons/ai';
-import { ModalDeleteProps } from '../../types/ModalTypes';
+import { toast } from 'react-toastify';
+import api from '../../../../../services/ApiAxios';
+import { ModalDeleteProps } from '../../../types/ModalTypes';
 
-export const DeleteModal = ({ nome }: ModalDeleteProps) => {
+export const DeleteModal = ({ nome, id, onUpdate }: ModalDeleteProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handleDelete = () => {
+    api
+      .delete(`categories/${id}`)
+      .then(async () => {
+        onUpdate();
+        toast('Category deleted successfully');
+        onClose();
+      })
+      .catch(() => toast('Category can not be deleted'));
+  };
 
   return (
     <>
@@ -22,13 +35,13 @@ export const DeleteModal = ({ nome }: ModalDeleteProps) => {
 
       <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
-        <ModalContent bg="gray.700">
+        <ModalContent>
           <ModalHeader>Atenção</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>Você realmente deseja excluir a categoria: {nome}?</ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="red" mr={3}>
+            <Button colorScheme="red" mr={3} onClick={handleDelete}>
               Excluir
             </Button>
             <Button onClick={onClose} colorScheme="teal">

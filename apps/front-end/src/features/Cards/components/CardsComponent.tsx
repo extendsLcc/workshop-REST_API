@@ -10,6 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { ButtonCard } from './Button';
 import { MdOutlineCategory, MdOutlinePersonOutline, MdOutlineReceipt, MdOutlineShoppingCart } from 'react-icons/md';
+import CreateModalComponent from '../../../Components/Modal/Categories/CreateModal/CreateModal';
 
 export const CardsComponent = () => (
   <Stack gap={8}>
@@ -34,7 +35,7 @@ export const CardsComponent = () => (
         <AccordionPanel pb={4}>
           <Stack>
             <ButtonCard buttonText="List all categories" href="/categories" />
-            <ButtonCard buttonText="Create a new category" href="/categories" />
+            <CreateModalComponent />
           </Stack>
         </AccordionPanel>
       </AccordionItem>

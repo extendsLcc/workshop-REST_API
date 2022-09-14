@@ -16,12 +16,12 @@ import { useQuery, useQueryClient } from 'react-query';
 import api from '../../../services/ApiAxios';
 import { dataTypes } from '../types/CategoriesTypes';
 import TitlePageComponent from '../../TitlePage/TitlePage';
-import ViewModal from '../../../Components/Modal/ViewModal/ViewModal';
-import InputModal from '../../../Components/Modal/InputModal/InputModal';
-import DeleteModal from '../../../Components/Modal/DeleteModal/DeleteModal';
+import ViewModal from '../../../Components/Modal/Categories/ViewModal/ViewModal';
+import InputModal from '../../../Components/Modal/Categories/InputModal/InputModal';
+import DeleteModal from '../../../Components/Modal/Categories/DeleteModal/DeleteModal';
 
 export const CategoriesPage = () => {
-  const { data, isLoading } = useQuery('CategoriesData', async () => {
+  const { data, isLoading, isFetching } = useQuery('CategoriesData', async () => {
     const response = await api.get('categories');
     const dataResponse = await response.data;
     return dataResponse;
@@ -32,7 +32,7 @@ export const CategoriesPage = () => {
     await queryClient.refetchQueries(['CategoriesData']);
   };
 
-  if (!isLoading) {
+  if (!isLoading || !isFetching) {
     return (
       <>
         <NavbarComponent />
@@ -54,7 +54,7 @@ export const CategoriesPage = () => {
                     <Td>{date.id}</Td>
                     <Td>{date.name}</Td>
                     <Td isNumeric>
-                      <ViewModal modalHeader={date.name} modalBody={`ID: ${date.id}, Name: ${date.name}`} />
+                      <ViewModal id={date.id} />
                       <InputModal
                         modalHeader={date.name}
                         id={date.id}
@@ -62,7 +62,7 @@ export const CategoriesPage = () => {
                         // eslint-disable-next-line @typescript-eslint/no-misused-promises
                         onUpdate={handleUpdateQuery}
                       />
-                      <DeleteModal nome={date.name} id={date.id} />
+                      <DeleteModal nome={date.name} id={date.id} onUpdate={handleUpdateQuery} />
                     </Td>
                   </Tr>
                 ))}

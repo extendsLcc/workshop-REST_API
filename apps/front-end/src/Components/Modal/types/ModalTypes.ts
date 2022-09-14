@@ -1,6 +1,5 @@
 export type ModalViewProps = {
-  modalHeader: string;
-  modalBody: string;
+  id: number;
 };
 
 export type ModalInputProps = {
@@ -13,4 +12,5 @@ export type ModalInputProps = {
 export type ModalDeleteProps = {
   nome: string;
   id: number;
+  onUpdate: () => Promise<void>;
 };

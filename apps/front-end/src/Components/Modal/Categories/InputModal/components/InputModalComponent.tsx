@@ -11,15 +11,14 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Toast,
   useDisclosure,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 
 import { BsPencil } from 'react-icons/bs';
 import { toast } from 'react-toastify';
-import api from '../../../../services/ApiAxios';
-import { ModalInputProps } from '../../types/ModalTypes';
+import api from '../../../../../services/ApiAxios';
+import { ModalInputProps } from '../../../types/ModalTypes';
 
 export const InputModal = ({ modalHeader, id, category, onUpdate }: ModalInputProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
