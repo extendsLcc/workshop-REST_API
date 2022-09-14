@@ -19,6 +19,7 @@ class ProductService {
 
   async listProducts({ search, categoryId, status = true }: ListProductsFilterParams) {
     return await this.prisma.product.findMany({
+      include: { category: true },
       where: {
         status: status,
         ...(search && { name: { contains: search } }),
