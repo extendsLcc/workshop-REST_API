@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  import type { MaybeRef } from '@vueuse/core';
+  import type { Ref } from 'vue';
 
-  const { isLoading = false } = defineProps<{
-    isLoading?: MaybeRef<boolean>;
+  const { isLoading } = defineProps<{
+    isLoading: Ref<boolean>;
   }>();
   const emit = defineEmits(['onDeleteConfirmation']);
 
@@ -16,8 +16,8 @@
     }
   }
 
-  watchEffect(() => {
-    if (!unref(isLoading)) {
+  watch(isLoading, (isLoading) => {
+    if (!isLoading) {
       handleCloseDropdown();
     }
   });
@@ -35,11 +35,7 @@
           </p>
           <div class="mt-4 flex justify-end gap-2">
             <button class="btn btn-outline" @click="handleCloseDropdown">No</button>
-            <button
-              class="btn btn-outline btn-error"
-              :class="{ loading: unref(isLoading) }"
-              @click="handleConfirmation"
-            >
+            <button class="btn btn-outline btn-error" :class="{ loading: isLoading }" @click="handleConfirmation">
               Yes
             </button>
           </div>
