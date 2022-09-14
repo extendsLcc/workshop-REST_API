@@ -1,36 +1,46 @@
 <script setup lang="ts">
   const {
-    value,
+    modelValue,
+    modelModifiers = {},
     name,
     error = undefined,
     placeholder = '',
+    type = 'text',
   } = defineProps<{
-    value: string;
+    modelValue?: number | string;
+    modelModifiers?: Record<string, boolean>;
     name: string;
     error?: string;
     placeholder?: string;
+    type?: 'text' | 'number';
   }>();
-  const emit = defineEmits(['update:value']);
+  const emit = defineEmits(['update:modelValue']);
 
   function handleInputChange(event: Event) {
     if (event.target instanceof HTMLInputElement) {
-      emit('update:value', event.target.value.trim());
+      const value = event.target.value;
+      if (modelModifiers.number) {
+        emit('update:modelValue', Number(value));
+        return;
+      }
+      emit('update:modelValue', event.target.value.trim());
     }
   }
 </script>
 
 <template>
-  <div class="form-control" :for="name">
-    <label class="label">
+  <div class="form-control">
+    <label class="label" :for="name">
       <span class="label-text capitalize">{{ name }}</span>
     </label>
     <input
       :id="name"
       :name="name"
-      :value="value"
-      type="text"
+      :value="modelValue"
+      :type="type"
       :placeholder="placeholder"
       class="input input-bordered"
+      required
       @input="handleInputChange"
     />
     <label v-if="error" class="label" :for="name">

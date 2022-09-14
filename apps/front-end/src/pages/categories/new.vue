@@ -50,7 +50,7 @@
     </Alert>
 
     <Form :is-loading="createCategoryRequest.isLoading" @submit="handleFormSubmit" @reset="handleFormReset">
-      <TextInput v-model:value="category.name" name="name" placeholder="category name" />
+      <TextInput v-model="category.name" name="name" placeholder="category name" />
     </Form>
   </Content>
 </template>

@@ -50,7 +50,7 @@
     </Alert>
 
     <Form :is-loading="createCustomerRequest.isLoading" @submit="handleFormSubmit" @reset="handleFormReset">
-      <TextInput v-model:value="customer.name" name="name" placeholder="customer name" />
+      <TextInput v-model="customer.name" name="name" placeholder="customer name" />
     </Form>
   </Content>
 </template>

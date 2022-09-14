@@ -72,7 +72,7 @@
 
     <Spinner v-if="retrieveCategoryRequest.isLoading.value" />
     <Form v-else :is-loading="updateCategoryRequest.isLoading" @submit="handleFormSubmit" @reset="handleFormReset">
-      <TextInput v-model:value="category.name" name="name" />
+      <TextInput v-model="category.name" name="name" />
     </Form>
   </Content>
 </template>
