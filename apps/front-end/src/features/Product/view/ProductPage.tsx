@@ -46,10 +46,7 @@ export const ProductPage = () => {
                   <Th>ID:</Th>
                   <Th>Name:</Th>
                   <Th>Description:</Th>
-                  <Th>Price:</Th>
-                  <Th>Stock:</Th>
-                  <Th>Status:</Th>
-                  <Th>Categoria:</Th>
+                  <Th>Category:</Th>
                   <Th isNumeric>Actions:</Th>
                 </Tr>
               </Thead>
@@ -59,9 +56,7 @@ export const ProductPage = () => {
                     <Td>{date.id}</Td>
                     <Td>{date.name}</Td>
                     <Td>{date.description}</Td>
-                    <Td>{date.price}</Td>
-                    <Td>{date.stock}</Td>
-                    <Td>{String(date.status)}</Td>
+
                     <Td>{date.category.name}</Td>
                     <Td>
                       <ViewModal id={date.id} />
@@ -82,10 +77,7 @@ export const ProductPage = () => {
                   <Th>ID:</Th>
                   <Th>Name:</Th>
                   <Th>Description:</Th>
-                  <Th>Price:</Th>
-                  <Th>Stock:</Th>
-                  <Th>Status:</Th>
-                  <Th>Categoria Id:</Th>
+                  <Th>Category:</Th>
                   <Th isNumeric>Actions:</Th>
                 </Tr>
               </Tfoot>

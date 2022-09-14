@@ -87,10 +87,7 @@ export const InputModal = ({ modalHeader, id, product, onUpdate }: ModalProducts
         price: productPrice,
         stock: productStock,
         status: productStatus,
-        category: {
-          id: productCategoryId,
-          name: productCategoryName,
-        },
+        categoryId: productCategoryId,
       })
       .then(() => {
         onClose();
@@ -134,7 +131,6 @@ export const InputModal = ({ modalHeader, id, product, onUpdate }: ModalProducts
                 />
                 <FormLabel>Description</FormLabel>
                 <Input
-                  ref={initialRef}
                   placeholder="Description"
                   value={productDescription}
                   onChange={(e) => setProductDescription(e.target.value)}
@@ -142,7 +138,6 @@ export const InputModal = ({ modalHeader, id, product, onUpdate }: ModalProducts
                 />
                 <FormLabel>Price</FormLabel>
                 <Input
-                  ref={initialRef}
                   placeholder="Price"
                   value={productPrice}
                   type="number"
@@ -151,7 +146,6 @@ export const InputModal = ({ modalHeader, id, product, onUpdate }: ModalProducts
                 />
                 <FormLabel>Stock</FormLabel>
                 <Input
-                  ref={initialRef}
                   placeholder="Stock"
                   value={productStock}
                   type="number"
@@ -178,10 +172,7 @@ export const InputModal = ({ modalHeader, id, product, onUpdate }: ModalProducts
                 <FormLabel>Category</FormLabel>
                 <Select
                   onChange={(e) => {
-                    if (e.target.value === 'true') {
-                      setProductStatus(true);
-                    }
-                    setProductStatus(false);
+                    setProductCategoryId(Number(e.target.value));
                   }}
                 >
                   {!isLoading ? (
@@ -198,13 +189,6 @@ export const InputModal = ({ modalHeader, id, product, onUpdate }: ModalProducts
                     <Spinner />
                   )}
                 </Select>
-                <Input
-                  ref={initialRef}
-                  placeholder="Category"
-                  value={productCategoryName}
-                  onChange={(e) => setProductCategoryName(e.target.value)}
-                  isRequired
-                />
               </Stack>
               <ModalFooter>
                 <Button colorScheme="blue" mr={3} type="submit">
