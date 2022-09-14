@@ -120,6 +120,28 @@ class OrderService {
     });
   }
 
+  async getOrderById(orderId: number) {
+    const order = await this.prisma.order.findUnique({
+      where: { id: orderId },
+      include: {
+        customer: true,
+        OrderItem: {
+          include: {
+            product: {
+              include: {
+                category: true,
+              },
+            },
+          },
+        },
+      },
+    });
+    if (!order) {
+      throw new ResourceNotFoundException(`Order with id ${orderId} not found`);
+    }
+    return order;
+  }
+
   async updateOrderStatus(orderId: number, newStatus: string) {
     if (!this.isValidOrderStatus(newStatus)) {
       throw new InvalidOrderStatusException(`Invalid order status ${newStatus}`);

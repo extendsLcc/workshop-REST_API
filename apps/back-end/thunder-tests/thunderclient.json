@@ -353,5 +353,19 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "c14e4698-fab9-4677-918f-42516860017d",
+    "colId": "decdeb02-57fa-4b61-abcd-86ac9258c1b9",
+    "containerId": "014eb061-1530-40a4-9c36-70ab85840501",
+    "name": "Get Order",
+    "url": "http://localhost:3000/orders/1",
+    "method": "GET",
+    "sortNum": 60000,
+    "created": "2022-09-14T21:45:26.410Z",
+    "modified": "2022-09-14T21:45:42.268Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
