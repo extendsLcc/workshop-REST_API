@@ -35,7 +35,7 @@
           </p>
           <div class="mt-4 flex justify-end gap-2">
             <button class="btn btn-outline" @click="handleCloseDropdown">No</button>
-            <button class="btn btn-outline btn-error" :class="{ loading: isLoading }" @click="handleConfirmation">
+            <button class="btn btn-outline btn-error" :class="{ loading: isLoading.value }" @click="handleConfirmation">
               Yes
             </button>
           </div>
