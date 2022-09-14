@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  import type { MaybeRef } from '@vueuse/core';
+  import type { Ref } from 'vue';
 
   const { isLoading } = defineProps<{
-    isLoading: MaybeRef<boolean>;
+    isLoading: Ref<boolean>;
   }>();
   const emit = defineEmits(['submit', 'reset']);
 </script>
@@ -14,7 +14,7 @@
 
       <div class="card-actions justify-end mt-5">
         <button class="btn btn-outline btn-error" type="reset">Reset</button>
-        <button class="btn btn-primary" type="submit" :class="{ loading: unref(isLoading) }">Save</button>
+        <button class="btn btn-primary" type="submit" :class="{ loading: isLoading.value }">Save</button>
       </div>
     </form>
   </div>

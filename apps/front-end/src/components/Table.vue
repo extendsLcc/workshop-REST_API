@@ -1,9 +1,9 @@
 <script setup lang="ts">
-  import type { MaybeRef } from '@vueuse/core';
+  import type { Ref } from 'vue';
 
   const { columnHeaders, isLoading } = defineProps<{
     columnHeaders: string[];
-    isLoading: MaybeRef<boolean>;
+    isLoading: Ref<boolean>;
   }>();
 </script>
 
@@ -15,7 +15,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-if="unref(isLoading)">
+      <tr v-if="isLoading.value">
         <td :colspan="columnHeaders.length" class="text-center">
           <div class="radial-progress animate-spin center" style="--value: 70; --size: 3rem" />
         </td>
