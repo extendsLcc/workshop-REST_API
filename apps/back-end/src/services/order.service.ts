@@ -110,6 +110,7 @@ class OrderService {
   async listOrders() {
     return await this.prisma.order.findMany({
       include: {
+        customer: true,
         OrderItem: {
           include: {
             product: true,
