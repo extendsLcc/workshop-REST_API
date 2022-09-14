@@ -8,9 +8,20 @@ export type ModalInputProps = {
   category: string;
   onUpdate: () => Promise<void>;
 };
+export type ModalProductsInputProps = {
+  modalHeader: string;
+  id: number;
+  product: string;
+  onUpdate: () => Promise<void>;
+};
 
 export type ModalDeleteProps = {
   nome: string;
   id: number;
   onUpdate: () => Promise<void>;
+};
+
+export type modalProductsCategoryProps = {
+  id: number;
+  name: string;
 };

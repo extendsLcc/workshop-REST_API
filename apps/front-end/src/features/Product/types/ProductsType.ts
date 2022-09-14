@@ -5,5 +5,8 @@ export type dataTypes = {
   price: number;
   stock: number;
   status: boolean;
-  categoryId: number;
+  category: {
+    id: number;
+    name: string;
+  };
 };
