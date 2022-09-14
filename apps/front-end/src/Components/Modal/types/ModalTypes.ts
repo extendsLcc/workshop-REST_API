@@ -25,3 +25,19 @@ export type modalProductsCategoryProps = {
   id: number;
   name: string;
 };
+
+export type OrderItemResultProps = {
+  quantity: number;
+  price: number;
+  orderId: number;
+  productId: number;
+  product: {
+    id: number;
+    name: string;
+    description: string;
+    price: number;
+    stock: number;
+    status: boolean;
+    categoryId: number;
+  };
+};
