@@ -1,3 +1,5 @@
 import ProductPage from '../../features/Product/Products';
 
-export default ProductPage;
+const Product = () => <ProductPage />;
+
+export default Product;

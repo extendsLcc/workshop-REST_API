@@ -1,3 +1,5 @@
 import CategoriesPage from '../../features/Categories/Categories';
 
-export default CategoriesPage;
+const Categories = () => <CategoriesPage />;
+
+export default Categories;

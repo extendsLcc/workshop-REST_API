@@ -12,10 +12,13 @@ import {
   Tr,
 } from '@chakra-ui/react';
 import NavbarComponent from '../../Navbar/navbar';
-import { useQuery } from 'react-query';
+import { useQuery, useQueryClient } from 'react-query';
 import api from '../../../services/ApiAxios';
 import { dataTypes } from '../types/ProductsType';
 import TitlePageComponent from '../../TitlePage/TitlePage';
+import ViewModal from '../../../Components/Modal/Products/ViewModal/ViewModal';
+import InputModal from '../../../Components/Modal/Products/InputModal/InputModal';
+import DeleteModal from '../../../Components/Modal/Products/DeleteModal/DeleteModal';
 
 export const ProductPage = () => {
   const { data, isLoading } = useQuery('ProductsData', async () => {
@@ -23,6 +26,11 @@ export const ProductPage = () => {
     const dataResponse = await response.data;
     return dataResponse;
   });
+
+  const queryClient = useQueryClient();
+  const handleUpdateQuery = async () => {
+    await queryClient.refetchQueries(['ProductsData']);
+  };
 
   if (!isLoading) {
     return (
@@ -41,7 +49,8 @@ export const ProductPage = () => {
                   <Th>Price:</Th>
                   <Th>Stock:</Th>
                   <Th>Status:</Th>
-                  <Th>Categoria Id:</Th>
+                  <Th>Categoria:</Th>
+                  <Th isNumeric>Actions:</Th>
                 </Tr>
               </Thead>
               <Tbody>
@@ -53,7 +62,18 @@ export const ProductPage = () => {
                     <Td>{date.price}</Td>
                     <Td>{date.stock}</Td>
                     <Td>{String(date.status)}</Td>
-                    <Td>{date.categoryId}</Td>
+                    <Td>{date.category.name}</Td>
+                    <Td>
+                      <ViewModal id={date.id} />
+                      <InputModal
+                        modalHeader={date.name}
+                        id={date.id}
+                        product={date.name}
+                        // eslint-disable-next-line @typescript-eslint/no-misused-promises
+                        onUpdate={handleUpdateQuery}
+                      />
+                      <DeleteModal nome={date.name} id={date.id} onUpdate={handleUpdateQuery} />
+                    </Td>
                   </Tr>
                 ))}
               </Tbody>
@@ -66,6 +86,7 @@ export const ProductPage = () => {
                   <Th>Stock:</Th>
                   <Th>Status:</Th>
                   <Th>Categoria Id:</Th>
+                  <Th isNumeric>Actions:</Th>
                 </Tr>
               </Tfoot>
             </Table>

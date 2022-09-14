@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import {
   Box,
   Flex,
@@ -18,12 +17,18 @@ import {
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
+import SidebarComponent from '../../Sidebar/Sidebar';
+import { useRouter } from 'next/router';
+
 export const NavbarComponent = () => {
   const { colorMode, toggleColorMode } = useColorMode();
+  const route = useRouter();
+
   return (
     <>
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
+          {route.route === '/' ? <SidebarComponent isFirstOpen={true} /> : <SidebarComponent />}
           <Box as="button">
             <Link href="/">
               <HStack>
@@ -32,7 +37,7 @@ export const NavbarComponent = () => {
                   src="https://images.ctfassets.net/n80ui2xgiaml/6POH36zaJYxXTyjmBSOKtb/8c75ffc935f549d07110fa41ab104e69/Brasoes-IFPR.png?w=30&q=30"
                   placeholder="IFPR"
                 />
-                <Text>API REST</Text>
+                <Text>ORDERS API</Text>
               </HStack>
             </Link>
           </Box>

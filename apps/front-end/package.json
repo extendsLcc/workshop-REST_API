@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@chakra-ui/core": "^0.8.0",
     "@chakra-ui/icons": "^2.0.8",
     "@chakra-ui/react": "^2.2.4",
     "@emotion/react": "^11.10.4",
@@ -21,7 +20,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
-    "react-query": "^3.39.2"
+    "react-query": "^3.39.2",
+    "react-toastify": "^9.0.8"
   },
   "devDependencies": {
     "@types/node": "18.7.16",
