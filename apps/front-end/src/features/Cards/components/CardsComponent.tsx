@@ -13,6 +13,7 @@ import { MdOutlineCategory, MdOutlinePersonOutline, MdOutlineReceipt, MdOutlineS
 import CreateModalComponent from '../../../Components/Modal/Categories/CreateModal/CreateModal';
 import CreateModalComponentProducts from '../../../Components/Modal/Products/CreateModal/CreateModal';
 import CreateModalComponentCustomer from '../../../Components/Modal/Customer/CreateModal/CreateModal';
+import CreateModalComponentOrders from '../../../Components/Modal/Orders/CreateModal/CreateModal';
 
 export const CardsComponent = () => (
   <Stack gap={8}>
@@ -110,7 +111,7 @@ export const CardsComponent = () => (
         <AccordionPanel pb={4}>
           <Stack>
             <ButtonCard buttonText="List all orders" href="/orders" />
-            <ButtonCard buttonText="Create a new order" href="/orders" />
+            <CreateModalComponentOrders />
           </Stack>
         </AccordionPanel>
       </AccordionItem>
