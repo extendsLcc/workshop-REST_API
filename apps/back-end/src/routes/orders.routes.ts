@@ -1,4 +1,4 @@
-import { ResourceNotFoundException } from '@/exception';
+import { ResourceNotFoundException } from '@/shared/exception';
 import {
   CreateOrderInput,
   InvalidOrderStatusException,
@@ -19,13 +19,14 @@ async function ordersRoutes(fastify: FastifyInstance) {
 
   // Place Order endpoint
   fastify.post<{
-    Body: CreateOrderInput;
+    Body: CreateOrderInput & { date: string };
   }>('/orders', async (request, reply) => {
-    const { customerId, products } = request.body;
+    const { customerId, products, date } = request.body;
     return await orderService
       .placeOrder({
         customerId,
         products,
+        ...(date && { date: new Date(date) }),
       })
       .then((order) => {
         return reply.status(HttpStatus.CREATED).send(order);

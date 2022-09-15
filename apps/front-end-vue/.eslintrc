@@ -1,0 +1,14 @@
+{
+  "extends": ["../../.eslintrc", "@antfu/eslint-config-vue", "plugin:prettier/recommended"],
+  "parser": "vue-eslint-parser",
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser",
+    "extraFileExtensions": [".vue"],
+    "project": "**/tsconfig.eslint.json",
+    "tsconfigRootDir": "./"
+  },
+  "rules": {
+    "vue/script-indent": ["error", 2, { "baseIndent": 1 }],
+    "@typescript-eslint/consistent-type-definitions": ["error", "type"]
+  }
+}

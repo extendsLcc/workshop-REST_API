@@ -13,6 +13,6 @@
     "lib": ["ES2022"],
     "skipLibCheck": true
   },
-  "include": ["**/*", ".eslintrc.js"],
+  "include": ["**/*", ".eslintrc"],
   "exclude": ["**/dist", "**/node_modules", "**/coverage"]
 }
