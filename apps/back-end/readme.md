@@ -24,7 +24,7 @@ This application allows to register orders of products for a customer.
 - `PATCH /products/:id` - Toggle product status by id
 - `DELETE /products/:id` - Delete a product by id
 
-**Cusomer**
+**Customer**
 - `GET /customers` - List all customers
 - `POST /customers` - Create a new customer
 

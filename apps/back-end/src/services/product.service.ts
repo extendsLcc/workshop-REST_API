@@ -29,7 +29,10 @@ class ProductService {
   }
 
   async getProductById(productId: number) {
-    return await this.prisma.product.findUnique({ where: { id: productId } });
+    return await this.prisma.product.findUnique({
+      include: { category: true },
+      where: { id: productId },
+    });
   }
 
   async updateProduct(productId: number, updateProductParams: Prisma.ProductUncheckedUpdateInput) {

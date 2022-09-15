@@ -43,6 +43,27 @@ async function ordersRoutes(fastify: FastifyInstance) {
       });
   });
 
+  fastify.get<{
+    Params: {
+      id: string;
+    };
+  }>('/orders/:id', async (request, reply) => {
+    const { id } = request.params;
+    return await orderService
+      .getOrderById(Number(id))
+      .then((order) => {
+        return reply.status(HttpStatus.OK).send(order);
+      })
+      .catch((error) => {
+        switch (error.constructor) {
+          case ResourceNotFoundException:
+            return reply.status(HttpStatus.NOT_FOUND).send(error);
+          default:
+            return reply.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error);
+        }
+      });
+  });
+
   // Update Order Status endpoint
   fastify.patch<{
     Params: { orderId: string };

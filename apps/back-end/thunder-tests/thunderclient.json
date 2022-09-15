@@ -307,16 +307,16 @@
     "colId": "decdeb02-57fa-4b61-abcd-86ac9258c1b9",
     "containerId": "014eb061-1530-40a4-9c36-70ab85840501",
     "name": "Create Order",
-    "url": "http://localhost:3000/orders",
+    "url": "http://localhost:3001/orders",
     "method": "POST",
     "sortNum": 80000,
     "created": "2022-09-01T20:09:56.610Z",
-    "modified": "2022-09-04T01:09:20.992Z",
+    "modified": "2022-09-14T22:14:05.471Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"customerId\": 1,\n  \"products\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 100\n    },\n    {\n      \"productId\": 4,\n      \"quantity\": 4\n    }\n  ]\n}",
+      "raw": "{\n  \"customerId\": 1,\n  \"products\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 1\n    },\n    {\n      \"productId\": 4,\n      \"quantity\": 4\n    }\n  ]\n}",
       "form": []
     },
     "tests": []
@@ -340,11 +340,11 @@
     "colId": "decdeb02-57fa-4b61-abcd-86ac9258c1b9",
     "containerId": "014eb061-1530-40a4-9c36-70ab85840501",
     "name": "Change Order Status",
-    "url": "http://localhost:3000/orders/1",
+    "url": "http://localhost:3001/orders/1",
     "method": "PATCH",
     "sortNum": 90000,
     "created": "2022-09-01T20:57:52.808Z",
-    "modified": "2022-09-04T01:09:54.686Z",
+    "modified": "2022-09-14T22:10:07.205Z",
     "headers": [],
     "params": [],
     "body": {
@@ -352,6 +352,20 @@
       "raw": "{\n  \"status\": \"cancelled\"\n}",
       "form": []
     },
+    "tests": []
+  },
+  {
+    "_id": "c14e4698-fab9-4677-918f-42516860017d",
+    "colId": "decdeb02-57fa-4b61-abcd-86ac9258c1b9",
+    "containerId": "014eb061-1530-40a4-9c36-70ab85840501",
+    "name": "Get Order",
+    "url": "http://localhost:3001/orders/1",
+    "method": "GET",
+    "sortNum": 60000,
+    "created": "2022-09-14T21:45:26.410Z",
+    "modified": "2022-09-14T22:00:16.398Z",
+    "headers": [],
+    "params": [],
     "tests": []
   }
 ]
