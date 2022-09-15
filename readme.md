@@ -17,7 +17,7 @@ This project was developed to help demonstrate the concepts taught during the wo
 
 ### :wrench: Installaling the Project
 
-Install pnmp if not already installed
+Install pnpm if not already installed
 ```
 npm install -g pnpm
 ```
@@ -32,7 +32,7 @@ cd Workshop-REST_API_for_beginners_with_nodejs
 # Install dependencies
 pnpm install
 ```
-Open back-end API project in VSCode
+Open back-end API project in VSCode - [See more in API readme](https://github.com/extendsLcc/Workshop-REST_API_for_beginners_with_nodejs/blob/master/apps/back-end/readme.md)
 ```sh
 # Access the back-end api folder
 cd apps/back-end
