@@ -61,7 +61,7 @@ importers:
       vite-plugin-node: 1.0.0_vite@3.0.9
       vite-tsconfig-paths: 3.5.0_vite@3.0.9
 
-  apps/front-end:
+  apps/front-end-react:
     specifiers:
       '@chakra-ui/icons': ^2.0.8
       '@chakra-ui/react': ^2.2.4
@@ -3348,7 +3348,7 @@ packages:
     dev: false
 
   /concat-map/0.0.1:
-    resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
+    resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
 
   /convert-source-map/1.8.0:
     resolution: {integrity: sha512-+OQdjP49zViI/6i7nIJpA8rAl4sV/JdPfU9nZs3VqOwGIgizICvuN2ru6fMd+4llL0tar18UYJXfZ/TWtmhUjA==}
