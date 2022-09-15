@@ -1,8 +1,8 @@
 import type { Customer } from '../customers/@types';
 import type { Product } from '../products/@types';
 
-const ValidOrderStatus = ['pending', 'paid', 'shipped', 'cancelled', 'completed', 'refunded'] as const;
-type OrderStatus = typeof ValidOrderStatus[number];
+export const ValidOrderStatus = ['pending', 'paid', 'shipped', 'cancelled', 'completed', 'refunded'] as const;
+export type OrderStatus = typeof ValidOrderStatus[number];
 
 export type Order = {
   id: number;
@@ -10,6 +10,7 @@ export type Order = {
   status: OrderStatus;
   customer: Customer;
   OrderItem: {
+    id: number;
     quantity: number;
     price: number;
     product: Product;
