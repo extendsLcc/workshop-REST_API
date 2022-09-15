@@ -13,7 +13,7 @@ export default defineConfig({
     vue({
       reactivityTransform: true,
     }),
-    Pages({ extensions: ['vue'] }),
+    Pages({ extensions: ['vue'], exclude: ['**/components/*.vue'] }),
     Layouts(),
     AutoImport({
       imports: ['vue', 'vue-router', 'vue/macros', '@vueuse/core'],

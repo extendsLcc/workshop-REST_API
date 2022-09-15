@@ -1,10 +1,10 @@
 <script setup lang="ts">
   import type { Product } from './@types';
+  import CategoriesSelect from './components/CategoriesSelect.vue';
   import Content from '@/components/Content.vue';
   import Form from '@/components/Form.vue';
   import TextInput from '@/components/TextInput.vue';
   import Alert from '@/components/Alert.vue';
-  import CategoriesSelect from '@/components/CategoriesSelect.vue';
 
   type CreateProductPayload = Partial<Omit<Product, 'id' | 'category' | 'status'>>;
 

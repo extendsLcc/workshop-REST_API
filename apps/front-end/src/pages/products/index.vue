@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import SearchInput from '../../components/SearchInput.vue';
   import type { Category } from '../categories/@types';
+  import SearchInput from './components/SearchInput.vue';
   import type { Product } from './@types';
   import Content from '@/components/Content.vue';
   import Table from '@/components/Table.vue';
