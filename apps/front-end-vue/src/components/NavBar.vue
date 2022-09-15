@@ -36,11 +36,7 @@
       </label>
 
       <div class="flex-none tooltip tooltip-left ml-auto" data-tip="github">
-        <a
-          class="btn btn-square btn-ghost"
-          href="https://github.com/extendsLcc/Workshop-REST_API_for_beginners_with_nodejs"
-          target="_blank"
-        >
+        <a class="btn btn-square btn-ghost" href="https://github.com/extendsLcc/workshop-REST_API" target="_blank">
           <i class="i-mdi-github text-2xl"></i>
         </a>
       </div>
