@@ -23,16 +23,16 @@ npm install -g pnpm
 ```
 Clone the project locally
 ```
-git clone https://github.com/extendsLcc/Workshop-REST_API_for_beginners_with_nodejs.git
+git clone https://github.com/extendsLcc/workshop-REST_API.git
 ```
 Install project dependencies
 ```sh
 # Access the project folder
-cd Workshop-REST_API_for_beginners_with_nodejs
+cd workshop-REST_API
 # Install dependencies
 pnpm install
 ```
-Open back-end API project in VSCode - [See more in API readme](https://github.com/extendsLcc/Workshop-REST_API_for_beginners_with_nodejs/blob/master/apps/back-end/readme.md)
+Open back-end API project in VSCode - [See more in API readme](./apps/back-end/readme.md)
 ```sh
 # Access the back-end api folder
 cd apps/back-end
