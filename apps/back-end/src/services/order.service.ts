@@ -8,6 +8,7 @@ class InvalidOrderStatusTransitionException extends Error {}
 
 type CreateOrderInput = {
   customerId: number;
+  date: Date;
   products: {
     productId: number;
     quantity: number;
@@ -22,7 +23,7 @@ class OrderService {
   constructor(private readonly prisma: PrismaClient) {}
 
   async placeOrder(createOrderParams: CreateOrderInput) {
-    const { customerId, products } = createOrderParams;
+    const { customerId, products, date } = createOrderParams;
     if (!(await this.checkIfCustomerExists(customerId))) {
       throw new ResourceNotFoundException(`Customer with id ${customerId} not found`);
     }
@@ -36,6 +37,7 @@ class OrderService {
       this.prisma.order.create({
         data: {
           customerId,
+          date,
           status: 'pending',
           OrderItem: {
             create: products.map((product) => ({
