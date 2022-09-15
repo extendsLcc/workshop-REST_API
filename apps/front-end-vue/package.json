@@ -1,0 +1,38 @@
+{
+  "name": "front-end",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "lint": "eslint --ext .ts,.vue src",
+    "lint:fix": "eslint --ext .ts,.vue --fix src",
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@unocss/reset": "^0.45.18",
+    "@vuepic/vue-datepicker": "^3.4.8",
+    "@vueuse/core": "^9.2.0",
+    "axios": "^0.27.2",
+    "vue": "^3.2.37",
+    "vue-router": "^4.1.5"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.26.3",
+    "@iconify-json/mdi": "^1.1.31",
+    "@kidonng/daisyui": "^1.7.0",
+    "@vitejs/plugin-vue": "^3.1.0",
+    "eslint": "^8.23.0",
+    "typescript": "^4.6.4",
+    "unocss": "^0.45.18",
+    "unocss-preset-daisy": "^1.1.0",
+    "unplugin-auto-import": "^0.11.2",
+    "vite": "^3.1.0",
+    "vite-plugin-pages": "^0.26.0",
+    "vite-plugin-vue-layouts": "^0.7.0",
+    "vite-tsconfig-paths": "^3.5.0",
+    "vue-tsc": "^0.40.4"
+  }
+}
