@@ -83,6 +83,8 @@
           placeholder="product price in cents"
           type="number"
           class="flex-basis-full sm:flex-basis-1/2"
+          min="1"
+          step="1"
         />
         <TextInput
           v-model.number="product.stock"
@@ -90,6 +92,7 @@
           placeholder="product stock"
           type="number"
           class="flex-basis-full sm:flex-basis-1/2"
+          step="1"
         />
       </div>
     </Form>
