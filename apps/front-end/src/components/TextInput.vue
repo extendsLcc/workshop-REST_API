@@ -1,18 +1,26 @@
 <script setup lang="ts">
   const {
+    value,
     modelValue,
     modelModifiers = {},
     name,
     error = undefined,
     placeholder = '',
     type = 'text',
+    min = undefined,
+    step = undefined,
+    disabled = false,
   } = defineProps<{
+    value?: string;
     modelValue?: number | string;
     modelModifiers?: Record<string, boolean>;
     name: string;
     error?: string;
     placeholder?: string;
     type?: 'text' | 'number';
+    min?: string;
+    step?: string;
+    disabled?: boolean;
   }>();
   const emit = defineEmits(['update:modelValue']);
 
@@ -36,9 +44,12 @@
     <input
       :id="name"
       :name="name"
-      :value="modelValue"
+      :value="modelValue ?? value"
       :type="type"
       :placeholder="placeholder"
+      :min="min"
+      :step="step"
+      :disabled="disabled"
       class="input input-bordered"
       required
       @input="handleInputChange"

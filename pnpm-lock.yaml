@@ -68,6 +68,7 @@ importers:
       '@kidonng/daisyui': ^1.7.0
       '@unocss/reset': ^0.45.18
       '@vitejs/plugin-vue': ^3.1.0
+      '@vuepic/vue-datepicker': ^3.4.8
       '@vueuse/core': ^9.2.0
       axios: ^0.27.2
       eslint: ^8.23.0
@@ -84,6 +85,7 @@ importers:
       vue-tsc: ^0.40.4
     dependencies:
       '@unocss/reset': 0.45.18
+      '@vuepic/vue-datepicker': 3.4.8_vue@3.2.38
       '@vueuse/core': 9.2.0_vue@3.2.38
       axios: 0.27.2
       vue: 3.2.38
@@ -932,6 +934,16 @@ packages:
   /@vue/shared/3.2.38:
     resolution: {integrity: sha512-dTyhTIRmGXBjxJE+skC8tTWCGLCVc4wQgRRLt8+O9p5ewBAjoBwtCAkLPrtToSr1xltoe3st21Pv953aOZ7alg==}
 
+  /@vuepic/vue-datepicker/3.4.8_vue@3.2.38:
+    resolution: {integrity: sha512-nbuMA7IgjtT99LqcjSTSUcl7omTZSB+7vYSWQ9gQm31Frm/1wn54fT1Q0HaRD9nHXX982AACbqeND4K80SKONw==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      vue: '>=3.2.0'
+    dependencies:
+      date-fns: 2.29.3
+      vue: 3.2.38
+    dev: false
+
   /@vueuse/core/9.2.0_vue@3.2.38:
     resolution: {integrity: sha512-/MZ6qpz6uSyaXrtoeBWQzAKRG3N7CvfVWvQxiM3ei3Xe5ydOjjtVbo7lGl9p8dECV93j7W8s63A8H0kFLpLyxg==}
     dependencies:
@@ -1375,6 +1387,11 @@ packages:
 
   /csstype/2.6.20:
     resolution: {integrity: sha512-/WwNkdXfckNgw6S5R125rrW8ez139lBHWouiBvX8dfMFtcn6V81REDqnH7+CRpRipfYlyU1CmOnOxrmGcFOjeA==}
+
+  /date-fns/2.29.3:
+    resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
+    engines: {node: '>=0.11'}
+    dev: false
 
   /dateformat/4.6.3:
     resolution: {integrity: sha512-2P0p0pFGzHS5EMnhdxQi7aJN+iMheud0UhG4dlE1DLAlvL8JHjJJTX/CSm4JXwV0Ka5nGk3zC5mcb5bUQUxxMA==}

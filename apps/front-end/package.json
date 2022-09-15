@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@unocss/reset": "^0.45.18",
+    "@vuepic/vue-datepicker": "^3.4.8",
     "@vueuse/core": "^9.2.0",
     "axios": "^0.27.2",
     "vue": "^3.2.37",
