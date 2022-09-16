@@ -11,10 +11,6 @@ ports:
     onOpen: notify
 
 tasks:
-  - name: Docker
-    init: docker-compose pull
-    command: docker-compose up
-
   - init: dependencies install
     command: |
       npm install -global pnpm
