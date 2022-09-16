@@ -17,6 +17,10 @@ This project was developed to help demonstrate the concepts taught during the wo
 
 ### :wrench: Installaling the Project
 
+Available with gitpod.io
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/extendsLcc/workshop-REST_API.git)
+
 Install pnpm if not already installed
 ```
 npm install -g pnpm
