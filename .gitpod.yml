@@ -11,9 +11,8 @@ ports:
     onOpen: notify
 
 tasks:
-  - init: dependencies install
+  - init: npm install -g pnpm
     command: |
-      npm install -global pnpm
       pnpm install
 vscode:
   extensions:
