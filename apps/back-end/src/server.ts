@@ -2,7 +2,7 @@ import { fastify as fastifyFactory } from 'fastify';
 
 export const fastify = fastifyFactory({});
 
-fastify.get('/', async (request, reply) => {
+fastify.get('/workshop', async (request, reply) => {
   return {
     lecturer: 'extendslcc',
     workshop: 'api-rest-basics',
