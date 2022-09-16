@@ -1,0 +1,32 @@
+# https://www.gitpod.io/docs/config-gitpod-file
+
+image:
+  file: .gitpod.Dockerfile
+
+ports:
+  - port: 3000
+    onOpen: notify
+  - port: 3001
+    onOpen: notify
+  - port: 5173
+    onOpen: notify
+
+tasks:
+  - name: Docker
+    init: docker-compose pull
+    command: docker-compose up
+
+  - init: dependencies install
+    command: |
+      npm install -global pnpm
+      pnpm install
+vscode:
+  extensions:
+    - ms-azuretools.vscode-docker
+    - esbenp.prettier-vscode
+    - dbaeumer.vscode-eslint
+    - bradlc.vscode-tailwindcss
+    - rangav.vscode-thunder-client
+    - Vue.volar
+    - dracula-theme.theme-dracula
+    - PKief.material-icon-theme
