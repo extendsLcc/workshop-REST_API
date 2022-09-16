@@ -1,7 +1,6 @@
 # https://www.gitpod.io/docs/config-gitpod-file
 
-image:
-  file: .gitpod.Dockerfile
+image: gitpod/workspace-full
 
 ports:
   - port: 3000
