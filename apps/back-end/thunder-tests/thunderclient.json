@@ -1,77 +1,80 @@
 [
   {
-    "_id": "5ccb55be-5769-43af-824f-aa666e5cb22c",
-    "colId": "2b270b6f-6f82-483d-b7af-0436065e5781",
+    "_id": "eb4148d6-774c-4825-806a-d34518194178",
+    "colId": "d463eb2a-1890-4f1c-a28c-80721199818f",
     "containerId": "",
-    "name": "Basic Request example",
-    "url": "http://localhost:3000",
+    "name": "List Users",
+    "url": "http://localhost:3000/users",
     "method": "GET",
     "sortNum": 10000,
-    "created": "2022-09-01T02:33:37.420Z",
-    "modified": "2022-09-01T02:33:37.420Z",
+    "created": "2022-09-16T02:21:04.423Z",
+    "modified": "2022-09-16T02:23:14.097Z",
     "headers": [],
     "params": [],
     "tests": []
   },
   {
-    "_id": "af333ddb-5acc-417f-96c0-4cdc11485e97",
-    "colId": "2b270b6f-6f82-483d-b7af-0436065e5781",
+    "_id": "0842c32f-5547-4275-b3e3-ec5c730e0fdc",
+    "colId": "d463eb2a-1890-4f1c-a28c-80721199818f",
     "containerId": "",
-    "name": "Request with query params",
-    "url": "http://localhost:3000/query?search=cultured content&page=10&limit=5",
+    "name": "Get User",
+    "url": "http://localhost:3000/users/1",
     "method": "GET",
     "sortNum": 20000,
-    "created": "2022-09-01T02:34:49.906Z",
-    "modified": "2022-09-01T02:36:31.465Z",
+    "created": "2022-09-16T02:24:25.611Z",
+    "modified": "2022-09-16T02:27:33.524Z",
     "headers": [],
-    "params": [
-      {
-        "name": "search",
-        "value": "cultured content",
-        "isPath": false
-      },
-      {
-        "name": "page",
-        "value": "10",
-        "isPath": false
-      },
-      {
-        "name": "limit",
-        "value": "5",
-        "isPath": false
-      }
-    ],
+    "params": [],
     "tests": []
   },
   {
-    "_id": "75943d1a-477d-48cf-b09b-8b9f7946db04",
-    "colId": "2b270b6f-6f82-483d-b7af-0436065e5781",
+    "_id": "3a6eee9f-8363-45c4-9eb7-0cf3042ecb29",
+    "colId": "d463eb2a-1890-4f1c-a28c-80721199818f",
     "containerId": "",
-    "name": "Request with body",
-    "url": "http://localhost:3000/post",
+    "name": "Create User",
+    "url": "http://localhost:3000/users",
     "method": "POST",
     "sortNum": 30000,
-    "created": "2022-09-01T02:36:58.897Z",
-    "modified": "2022-09-01T02:37:54.366Z",
+    "created": "2022-09-16T02:27:37.625Z",
+    "modified": "2022-09-16T02:28:07.772Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"extendslcc\",\n  \"workshop\": \"REST-api basics\"\n}",
+      "raw": "{\n  \"name\": \"extends\",\n  \"age\": 50\n}",
       "form": []
     },
     "tests": []
   },
   {
-    "_id": "75c91cc5-f370-48b8-b650-f5239622e1e5",
-    "colId": "2b270b6f-6f82-483d-b7af-0436065e5781",
+    "_id": "aa0103a7-f7d9-4f11-93d3-a14515d50565",
+    "colId": "d463eb2a-1890-4f1c-a28c-80721199818f",
     "containerId": "",
-    "name": "Request with route param",
-    "url": "http://localhost:3000/route/42",
-    "method": "GET",
+    "name": "Update User",
+    "url": "http://localhost:3000/users/1",
+    "method": "PUT",
     "sortNum": 40000,
-    "created": "2022-09-01T02:38:30.720Z",
-    "modified": "2022-09-01T02:38:44.810Z",
+    "created": "2022-09-16T02:28:13.891Z",
+    "modified": "2022-09-16T02:28:56.281Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"John Doe edited\",\n  \"age\": 31\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "11f3c9c4-9b43-4e7c-a2f8-5abb5b12a81e",
+    "colId": "d463eb2a-1890-4f1c-a28c-80721199818f",
+    "containerId": "",
+    "name": "Delete User",
+    "url": "http://localhost:3000/users/2",
+    "method": "DELETE",
+    "sortNum": 50000,
+    "created": "2022-09-16T02:29:06.424Z",
+    "modified": "2022-09-16T02:29:28.415Z",
     "headers": [],
     "params": [],
     "tests": []
