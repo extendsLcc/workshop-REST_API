@@ -4,16 +4,18 @@ image: gitpod/workspace-full
 
 ports:
   - port: 3000
-    onOpen: notify
+    onOpen: open-browser
   - port: 3001
-    onOpen: notify
+    onOpen: open-browser
   - port: 5173
-    onOpen: notify
+    onOpen: open-browser
 
 tasks:
   - init: npm install -g pnpm
     command: |
       pnpm install
+      pnpm --filter back-end run prisma:setup
+      pnpm run -recursive dev
 vscode:
   extensions:
     - ms-azuretools.vscode-docker
