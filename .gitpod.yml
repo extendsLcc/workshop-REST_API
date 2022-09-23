@@ -4,9 +4,9 @@ image: gitpod/workspace-full
 
 ports:
   - port: 3000
-    onOpen: open-preview
+    onOpen: ignore
   - port: 3001
-    onOpen: open-preview
+    onOpen: open-browser
   - port: 5173
     onOpen: open-preview
 
