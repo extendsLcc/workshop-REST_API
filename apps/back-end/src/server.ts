@@ -12,7 +12,9 @@ const fastify = fastifyFactory({
 });
 
 fastify.register(fastifyPrismaClient, {});
-fastify.register(cors);
+fastify.register(cors, {
+  credentials: true,
+});
 
 fastify.register(categoriesRoutes);
 fastify.register(productsRoutes);
