@@ -7,6 +7,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
+    "setup": "pnpm --filter back-end run prisma:setup",
+    "dev": "pnpm run --recursive --parallel dev",
     "prepare": "husky install"
   },
   "keywords": [],
