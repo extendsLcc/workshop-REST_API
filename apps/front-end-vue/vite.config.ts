@@ -5,6 +5,7 @@ import Pages from 'vite-plugin-pages';
 import Layouts from 'vite-plugin-vue-layouts';
 import Unocss from 'unocss/vite';
 import AutoImport from 'unplugin-auto-import/vite';
+import EnvironmentPlugin from 'vite-plugin-environment';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -22,5 +23,6 @@ export default defineConfig({
       vueTemplate: true,
     }),
     Unocss(),
+    EnvironmentPlugin(['GITPOD_WORKSPACE_URL'], { defineOn: 'import.meta.env' }),
   ],
 });

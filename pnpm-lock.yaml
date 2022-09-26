@@ -120,6 +120,7 @@ importers:
       unocss-preset-daisy: ^1.1.0
       unplugin-auto-import: ^0.11.2
       vite: ^3.1.0
+      vite-plugin-environment: ^1.1.2
       vite-plugin-pages: ^0.26.0
       vite-plugin-vue-layouts: ^0.7.0
       vite-tsconfig-paths: ^3.5.0
@@ -144,6 +145,7 @@ importers:
       unocss-preset-daisy: 1.2.0_5llb4ip44yrc34h2p6uui5vayi
       unplugin-auto-import: 0.11.2_j257a7fvehe4l6224muo7g6tiu
       vite: 3.1.1
+      vite-plugin-environment: 1.1.2_vite@3.1.1
       vite-plugin-pages: 0.26.0_vite@3.1.1
       vite-plugin-vue-layouts: 0.7.0_npdn3jm2zg4g7dngdn2zkjbyju
       vite-tsconfig-paths: 3.5.0_vite@3.1.1
@@ -8053,6 +8055,14 @@ packages:
     dependencies:
       spdx-correct: 3.1.1
       spdx-expression-parse: 3.0.1
+    dev: true
+
+  /vite-plugin-environment/1.1.2_vite@3.1.1:
+    resolution: {integrity: sha512-WFgM/ibceOEIuficZVaLcmJvcMZiyTkGzeS8+pzfByGYRdewqil7LSLDV1DwJfFQIx/YzcW9YRSWQG7cJ2XT1w==}
+    peerDependencies:
+      vite: '>= 2.7'
+    dependencies:
+      vite: 3.1.1
     dev: true
 
   /vite-plugin-node/1.0.0_vite@3.1.1:
