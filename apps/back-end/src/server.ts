@@ -13,6 +13,7 @@ const fastify = fastifyFactory({
 
 fastify.register(fastifyPrismaClient, {});
 fastify.register(cors, {
+  origin: true,
   credentials: true,
 });
 
