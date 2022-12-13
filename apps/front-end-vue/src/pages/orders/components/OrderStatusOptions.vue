@@ -30,7 +30,7 @@
     <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
       <li v-if="['cancelled', 'refunded'].includes(order.status)">Cannot be reverted</li>
       <li v-for="status in ValidOrderStatus" v-else :key="status" class="dropdown">
-        <a @click="statusDropdownState[status] = true"> change to {{ status }} </a>
+        <button @click="statusDropdownState[status] = true">change to {{ status }}</button>
         <div
           tabindex="0"
           class="dropdown-content py-2 bg-transparent!"

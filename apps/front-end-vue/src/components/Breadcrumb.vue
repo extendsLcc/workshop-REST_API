@@ -32,10 +32,10 @@
   <div class="text-sm breadcrumbs my-3">
     <ul>
       <li class="capitalize">
-        <a href="/">home</a>
+        <RouterLink to="/">home</RouterLink>
       </li>
       <li v-for="breadcrumbItem in breadcrumbItems" :key="breadcrumbItem" class="capitalize">
-        <a :href="`/${breadcrumbItem}`">{{ breadcrumbItem }}</a>
+        <RouterLink :to="`/${breadcrumbItem}`">{{ breadcrumbItem }}</RouterLink>
       </li>
       <li class="capitalize">{{ lastBreadcrumbItem }}</li>
     </ul>
