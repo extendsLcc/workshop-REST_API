@@ -7,7 +7,7 @@ const API_URL = import.meta.env.GITPOD_WORKSPACE_URL
 
 const http = axios.create({
   baseURL: API_URL,
-  withCredentials: true,
+  withCredentials: Boolean(import.meta.env.GITPOD_WORKSPACE_URL),
 });
 
 export const useApi = <ResponseType = unknown>() => {
