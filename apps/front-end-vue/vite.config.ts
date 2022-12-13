@@ -23,6 +23,6 @@ export default defineConfig({
       vueTemplate: true,
     }),
     Unocss(),
-    EnvironmentPlugin(['GITPOD_WORKSPACE_URL'], { defineOn: 'import.meta.env' }),
+    EnvironmentPlugin({ GITPOD_WORKSPACE_URL: null }, { defineOn: 'import.meta.env' }),
   ],
 });
