@@ -1,13 +1,13 @@
-import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
+import { Prisma } from '@prisma/client';
 
 const PrismaRecordNotFoundErrorCode = 'P2025';
 
-const isPrismaRecordNotFoundError = (error: Error): error is PrismaClientKnownRequestError => {
-  return error instanceof PrismaClientKnownRequestError && error.code === PrismaRecordNotFoundErrorCode;
+const isPrismaRecordNotFoundError = (error: Error): error is Prisma.PrismaClientKnownRequestError => {
+  return error instanceof Prisma.PrismaClientKnownRequestError && error.code === PrismaRecordNotFoundErrorCode;
 };
 
-const isPrismaForeignKeyConstraintFailedError = (error: Error): error is PrismaClientKnownRequestError => {
-  return error instanceof PrismaClientKnownRequestError && error.code === 'P2003';
+const isPrismaForeignKeyConstraintFailedError = (error: Error): error is Prisma.PrismaClientKnownRequestError => {
+  return error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2003';
 };
 
 abstract class Exception extends Error {
